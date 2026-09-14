@@ -1,0 +1,57 @@
+import Link from "next/link";
+import { getFeaturedItems } from "@/lib/menu-data";
+import { formatPrice } from "@/lib/utils";
+
+export default function FeaturedMenu() {
+  const featured = getFeaturedItems();
+
+  return (
+    <section className="py-16 bg-gray-50 dark:bg-gray-900">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4">Our Specialties</h2>
+          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Discover our most loved dishes, handpicked for an unforgettable dining experience
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {featured.map((item) => (
+            <div
+              key={item.id}
+              className="card p-4 hover:shadow-lg transition-shadow"
+            >
+              <div className="aspect-square bg-gray-200 dark:bg-gray-800 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+                {item.image_url ? (
+                  <img
+                    src={item.image_url}
+                    alt={item.name}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <span className="text-4xl">🍽️</span>
+                )}
+              </div>
+              <h3 className="font-semibold mb-1">{item.name}</h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2 line-clamp-2">
+                {item.description}
+              </p>
+              <p className="text-lg font-bold bg-gradient-to-r from-gradient-start to-gradient-end bg-clip-text text-transparent">
+                {formatPrice(item.price)}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-10">
+          <Link
+            href="/menu"
+            className="inline-flex items-center text-gradient-start hover:text-gradient-end font-semibold transition-colors"
+          >
+            View Full Menu →
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
