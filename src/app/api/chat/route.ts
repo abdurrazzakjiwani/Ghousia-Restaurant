@@ -66,7 +66,8 @@ export async function POST(request: NextRequest) {
         session_id,
         response,
       });
-    } catch {
+    } catch (error) {
+      console.error("Groq API error:", error);
       return NextResponse.json({
         session_id,
         response: "Thank you for your message! Our AI assistant is temporarily unavailable. Please call us at 0301-3631555 or use the WhatsApp button to place your order directly.",
