@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
       messages.push({ role: "user", content: message });
 
       const completion = await getGroq().chat.completions.create({
-        model: "llama-3.3-70b-versatile",
+        model: "openai/gpt-oss-20b",
         messages,
         temperature: 0.7,
         max_tokens: 1024,
