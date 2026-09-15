@@ -8,13 +8,21 @@ export default function AboutPreview() {
           <div>
             <h2 className="text-3xl font-bold mb-6">Our Story</h2>
             <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-              Ghousia Golden Spoon brings the authentic flavors of Pakistan to your table.
-              Our chefs use traditional recipes passed down through generations, combined
-              with the finest ingredients to create an unforgettable dining experience.
+              Ghousia Golden Spoon was born from a family&apos;s passion for authentic
+              Pakistani cuisine. What started as a small kitchen in Federal B Area
+              has grown into one of Karachi&apos;s most loved dining destinations,
+              serving thousands of happy customers every week.
+            </p>
+            <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+              Our chefs use traditional charcoal grilling techniques and hand-ground
+              spice blends to create dishes that honor generations of Pakistani
+              culinary heritage. From our signature Tikka Platter to our rich
+              Chicken Karahi, every dish is crafted with care.
             </p>
             <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-              From our signature BBQ platters to our rich karahi and handi dishes,
-              every meal is crafted with love and served with warmth.
+              Whether you&apos;re craving crispy broast, sizzling BBQ, or a comforting
+              bowl of handi, we deliver the taste of home to your doorstep — all
+              across Karachi.
             </p>
             <Link
               href="/about"
@@ -26,7 +34,7 @@ export default function AboutPreview() {
           <div className="bg-gradient-to-br from-gradient-start to-gradient-end rounded-2xl p-8 text-white">
             <div className="grid grid-cols-2 gap-4 text-center">
               <div className="p-4">
-                <p className="text-3xl font-bold">57+</p>
+                <p className="text-3xl font-bold">39+</p>
                 <p className="text-white/80 text-sm">Menu Items</p>
               </div>
               <div className="p-4">

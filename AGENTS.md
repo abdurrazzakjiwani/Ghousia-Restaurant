@@ -3,6 +3,8 @@
 Auto-generated from all feature plans. Last updated: 2026-09-14
 
 ## Active Technologies
+- TypeScript 5.x, Node.js 18+ + Next.js 14 (App Router), Tailwind CSS, Supabase JS Client, Groq SDK (Llama 3.3 70B), Lucide React (003-menu-images-chatbot-fix)
+- Supabase PostgreSQL (existing 8 tables, no schema changes needed) (003-menu-images-chatbot-fix)
 
 - TypeScript 5.x, Node.js 18+ + Next.js 14 (App Router), Tailwind CSS, Supabase JS Client, Groq SDK, Lucide React (001-restaurant-website)
 
@@ -23,6 +25,7 @@ npm test; npm run lint
 TypeScript 5.x, Node.js 18+: Follow standard conventions
 
 ## Recent Changes
+- 003-menu-images-chatbot-fix: Added TypeScript 5.x, Node.js 18+ + Next.js 14 (App Router), Tailwind CSS, Supabase JS Client, Groq SDK (Llama 3.3 70B), Lucide React
 
 - 001-restaurant-website: Added TypeScript 5.x, Node.js 18+ + Next.js 14 (App Router), Tailwind CSS, Supabase JS Client, Groq SDK, Lucide React
 

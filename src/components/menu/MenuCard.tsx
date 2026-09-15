@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { MenuItem } from "@/types";
 import { formatPrice } from "@/lib/utils";
 import { Plus, Minus } from "lucide-react";
@@ -17,17 +18,24 @@ export default function MenuCard({
   cartQuantity = 0,
   onUpdateQuantity,
 }: MenuCardProps) {
+  const [imgError, setImgError] = useState(false);
+  const showImage = item.image_url && !imgError;
+
   return (
     <div className="card overflow-hidden hover:shadow-lg transition-shadow">
       <div className="aspect-[4/3] bg-gray-200 dark:bg-gray-800 flex items-center justify-center overflow-hidden">
-        {item.image_url ? (
+        {showImage ? (
           <img
-            src={item.image_url}
+            src={item.image_url!}
             alt={item.name}
             className="w-full h-full object-cover"
+            onError={() => setImgError(true)}
           />
         ) : (
-          <span className="text-5xl">🍽️</span>
+          <div className="flex flex-col items-center justify-center p-4 text-center">
+            <span className="text-3xl mb-2">🍽️</span>
+            <span className="text-xs font-medium text-gray-500 dark:text-gray-400">{item.name}</span>
+          </div>
         )}
       </div>
       <div className="p-4">

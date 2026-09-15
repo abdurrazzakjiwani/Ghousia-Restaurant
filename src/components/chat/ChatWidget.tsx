@@ -43,7 +43,14 @@ export default function ChatWidget() {
               </div>
             )}
             {messages.map((msg, i) => (
-              <ChatMessage key={i} role={msg.role} content={msg.content} />
+              <ChatMessage
+                key={i}
+                role={msg.role}
+                content={msg.content}
+                orderUrl={msg.orderUrl}
+                orderItems={msg.orderItems}
+                orderTotal={msg.orderTotal}
+              />
             ))}
             {isLoading && (
               <div className="flex justify-start">

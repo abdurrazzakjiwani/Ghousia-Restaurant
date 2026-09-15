@@ -1,6 +1,41 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { getFeaturedItems } from "@/lib/menu-data";
 import { formatPrice } from "@/lib/utils";
+
+function FeaturedCard({ item }: { item: ReturnType<typeof getFeaturedItems>[number] }) {
+  const [imgError, setImgError] = useState(false);
+  const showImage = item.image_url && !imgError;
+
+  return (
+    <div className="card p-4 hover:shadow-lg transition-shadow">
+      <div className="aspect-square bg-gray-200 dark:bg-gray-800 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+        {showImage ? (
+          <img
+            src={item.image_url!}
+            alt={item.name}
+            className="w-full h-full object-cover"
+            onError={() => setImgError(true)}
+          />
+        ) : (
+          <div className="flex flex-col items-center justify-center p-4 text-center">
+            <span className="text-3xl mb-2">🍽️</span>
+            <span className="text-xs font-medium text-gray-500 dark:text-gray-400">{item.name}</span>
+          </div>
+        )}
+      </div>
+      <h3 className="font-semibold mb-1">{item.name}</h3>
+      <p className="text-sm text-gray-500 dark:text-gray-400 mb-2 line-clamp-2">
+        {item.description}
+      </p>
+      <p className="text-lg font-bold bg-gradient-to-r from-gradient-start to-gradient-end bg-clip-text text-transparent">
+        {formatPrice(item.price)}
+      </p>
+    </div>
+  );
+}
 
 export default function FeaturedMenu() {
   const featured = getFeaturedItems();
@@ -17,29 +52,7 @@ export default function FeaturedMenu() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {featured.map((item) => (
-            <div
-              key={item.id}
-              className="card p-4 hover:shadow-lg transition-shadow"
-            >
-              <div className="aspect-square bg-gray-200 dark:bg-gray-800 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
-                {item.image_url ? (
-                  <img
-                    src={item.image_url}
-                    alt={item.name}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <span className="text-4xl">🍽️</span>
-                )}
-              </div>
-              <h3 className="font-semibold mb-1">{item.name}</h3>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mb-2 line-clamp-2">
-                {item.description}
-              </p>
-              <p className="text-lg font-bold bg-gradient-to-r from-gradient-start to-gradient-end bg-clip-text text-transparent">
-                {formatPrice(item.price)}
-              </p>
-            </div>
+            <FeaturedCard key={item.id} item={item} />
           ))}
         </div>
 

@@ -95,3 +95,18 @@ export interface WhatsAppOrder {
   address?: string;
   notes?: string;
 }
+
+export interface OrderIntentItem {
+  menu_item_id: string;
+  name: string;
+  quantity: number;
+  price: number;
+  subtotal: number;
+}
+
+export interface OrderIntent {
+  items: OrderIntentItem[];
+  total: number;
+  is_valid: boolean;
+  unmatched_text: string | null;
+}

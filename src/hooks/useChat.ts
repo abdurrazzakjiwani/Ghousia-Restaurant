@@ -1,10 +1,14 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { OrderIntentItem } from "@/types";
 
 interface Message {
   role: "user" | "assistant";
   content: string;
+  orderUrl?: string | null;
+  orderItems?: OrderIntentItem[] | null;
+  orderTotal?: number | null;
 }
 
 export function useChat() {
@@ -18,14 +22,22 @@ export function useChat() {
     setIsLoading(true);
 
     try {
+      const history = messages.map((m) => ({ role: m.role, content: m.content }));
+
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ session_id: sessionId, message: content }),
+        body: JSON.stringify({ session_id: sessionId, message: content, history }),
       });
 
       const data = await res.json();
-      const assistantMessage: Message = { role: "assistant", content: data.response || "Sorry, I couldn't process that." };
+      const assistantMessage: Message = {
+        role: "assistant",
+        content: data.response || "Sorry, I couldn't process that.",
+        orderUrl: data.orderUrl || null,
+        orderItems: data.orderItems || null,
+        orderTotal: data.orderTotal || null,
+      };
       setMessages((prev) => [...prev, assistantMessage]);
     } catch {
       setMessages((prev) => [
@@ -35,7 +47,7 @@ export function useChat() {
     } finally {
       setIsLoading(false);
     }
-  }, [sessionId]);
+  }, [sessionId, messages]);
 
   const clearMessages = useCallback(() => {
     setMessages([]);
