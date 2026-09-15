@@ -1,8 +1,13 @@
 import Groq from "groq-sdk";
 
-export const groq = new Groq({
-  apiKey: process.env.GROQ_API_KEY,
-});
+let _groq: Groq | null = null;
+
+export function getGroq(): Groq {
+  if (!_groq) {
+    _groq = new Groq({ apiKey: process.env.GROQ_API_KEY || "" });
+  }
+  return _groq;
+}
 
 export const CHAT_SYSTEM_PROMPT = `You are the AI assistant for Ghousia Golden Spoon, a Pakistani restaurant in Karachi. You help customers browse the menu, get recommendations, and place orders.
 

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { groq, CHAT_SYSTEM_PROMPT } from "@/lib/groq";
+import { getGroq, CHAT_SYSTEM_PROMPT } from "@/lib/groq";
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
     }
 
     try {
-      const completion = await groq.chat.completions.create({
+      const completion = await getGroq().chat.completions.create({
         model: "llama-3.3-70b-versatile",
         messages: [
           { role: "system", content: CHAT_SYSTEM_PROMPT },
