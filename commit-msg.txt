@@ -1,1 +1,1 @@
-fix: switch chatbot to openai/gpt-oss-20b model with error logging
+spec: add animation and chatbot scroll feature specification
