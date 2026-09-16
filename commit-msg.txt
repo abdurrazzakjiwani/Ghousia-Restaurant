@@ -1,1 +1,1 @@
-spec: add animation and chatbot scroll feature specification
+plan: add animation and chatbot scroll implementation plan
