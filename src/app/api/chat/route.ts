@@ -1,7 +1,36 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getGroq, CHAT_SYSTEM_PROMPT } from "@/lib/groq";
+import { getGroq, buildSystemPrompt } from "@/lib/groq";
 import { detectOrderIntent } from "@/lib/order-detection";
 import { generateChatOrderUrl } from "@/lib/utils";
+import { isAbusive, isRestaurantContext, getOffTopicRefusal, getAbuseRefusal } from "@/lib/guardrails";
+
+const MAX_MESSAGE_LENGTH = 500;
+
+const CLOSING_SALUTATIONS = ["JazakAllah Sir", "Thank you", "Shukriya"];
+let lastClosingIndex = -1;
+
+function shouldAddClosing(historyLength: number): boolean {
+  return historyLength > 0 && historyLength % 3 === 0;
+}
+
+function pickClosing(): string {
+  let index: number;
+  do {
+    index = Math.floor(Math.random() * CLOSING_SALUTATIONS.length);
+  } while (index === lastClosingIndex && CLOSING_SALUTATIONS.length > 1);
+  lastClosingIndex = index;
+  return CLOSING_SALUTATIONS[index];
+}
+
+function addClosingIfAppropriate(response: string, historyLength: number): string {
+  const trimmed = response.trimEnd();
+  const alreadyEndsWithClosing = CLOSING_SALUTATIONS.some(
+    (s) => trimmed.endsWith(s)
+  );
+  if (alreadyEndsWithClosing) return trimmed;
+  if (!shouldAddClosing(historyLength)) return trimmed;
+  return `${trimmed}\n\n${pickClosing()}`;
+}
 
 interface ChatMessage {
   role: "system" | "user" | "assistant";
@@ -19,6 +48,27 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    if (typeof message === "string" && message.length > MAX_MESSAGE_LENGTH) {
+      return NextResponse.json({
+        session_id,
+        response: `Your message is too long. Please keep your message under ${MAX_MESSAGE_LENGTH} characters. How can I help you with Ghousia Golden Spoon restaurant?`,
+      });
+    }
+
+    if (isAbusive(message)) {
+      return NextResponse.json({
+        session_id,
+        response: getAbuseRefusal(),
+      });
+    }
+
+    if (!isRestaurantContext(message)) {
+      return NextResponse.json({
+        session_id,
+        response: getOffTopicRefusal(),
+      });
+    }
+
     const orderIntent = detectOrderIntent(message);
 
     if (orderIntent.is_valid) {
@@ -26,7 +76,8 @@ export async function POST(request: NextRequest) {
       const itemList = orderIntent.items
         .map((item) => `${item.quantity}x ${item.name} - Rs. ${item.subtotal.toLocaleString("en-PK")}`)
         .join("\n");
-      const response = `Great choice! Here's your order:\n\n${itemList}\n\nTotal: Rs. ${orderIntent.total.toLocaleString("en-PK")}\n\nClick the button below to send your order on WhatsApp.`;
+      const closing = shouldAddClosing(history?.length ?? 0) ? `\n\n${pickClosing()}` : "";
+      const response = `Great choice! Here's your order:\n\n${itemList}\n\nTotal: Rs. ${orderIntent.total.toLocaleString("en-PK")}\n\nClick the button below to send your order on WhatsApp.${closing}`;
 
       return NextResponse.json({
         session_id,
@@ -39,7 +90,7 @@ export async function POST(request: NextRequest) {
 
     try {
       const messages: ChatMessage[] = [
-        { role: "system", content: CHAT_SYSTEM_PROMPT },
+        { role: "system", content: buildSystemPrompt() },
       ];
 
       if (Array.isArray(history)) {
@@ -60,7 +111,8 @@ export async function POST(request: NextRequest) {
         max_tokens: 1024,
       });
 
-      const response = completion.choices[0]?.message?.content || "I'm sorry, I couldn't process that.";
+      let response = completion.choices[0]?.message?.content || "I'm sorry, I couldn't process that.";
+      response = addClosingIfAppropriate(response, history?.length ?? 0);
 
       return NextResponse.json({
         session_id,

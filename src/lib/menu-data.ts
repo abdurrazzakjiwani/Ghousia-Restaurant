@@ -89,3 +89,19 @@ export function searchItems(query: string): MenuItem[] {
         item.description?.toLowerCase().includes(lower))
   );
 }
+
+export function buildMenuContext(): string {
+  const lines: string[] = ["Full Menu (all prices in PKR):"];
+  for (const cat of categories) {
+    const items = menuItems.filter(
+      (item) => item.category_id === cat.id && item.is_available
+    );
+    if (items.length === 0) continue;
+    lines.push(`\n${cat.icon} ${cat.name}:`);
+    for (const item of items) {
+      const desc = item.description ? ` — ${item.description}` : "";
+      lines.push(`  - ${item.name} (Rs. ${item.price})${desc}`);
+    }
+  }
+  return lines.join("\n");
+}
