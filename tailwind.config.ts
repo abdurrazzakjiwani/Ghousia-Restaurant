@@ -6,7 +6,7 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: "class",
+  darkMode: "none",
   theme: {
     extend: {
       colors: {
@@ -23,8 +23,8 @@ const config: Config = {
           900: "#364fc7",
         },
         gradient: {
-          start: "#667eea",
-          end: "#764ba2",
+          start: "#f59e0b",
+          end: "#ea580c",
         },
       },
     },
