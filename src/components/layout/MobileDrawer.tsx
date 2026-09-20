@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { X, Phone, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface NavItem {
   href: string;
@@ -25,7 +25,7 @@ export default function MobileDrawer({
   const pathname = usePathname();
 
   return (
-    <>
+    <AnimatePresence>
       {isOpen && (
         <>
           <motion.div
@@ -78,10 +78,7 @@ export default function MobileDrawer({
                     pathname === link.href
                       ? "bg-amber-50 text-amber-600"
                       : "hover:bg-gray-100 text-gray-700"
-                  )}
-                >
-                  {link.label}
-                </Link>
+                ))}
               ))}
             </nav>
 
@@ -98,6 +95,6 @@ export default function MobileDrawer({
           </motion.div>
         </>
       )}
-    </>
+    </AnimatePresence>
   );
 }
