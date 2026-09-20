@@ -35,7 +35,7 @@ export default function MobileDrawer({
         className="fixed top-0 right-0 bottom-0 w-72 bg-white z-50 shadow-xl translate-x-0 transition-transform"
       >
         <div className="flex items-center justify-between p-4 border-b border-gray-200">
-          <span className="text-lg font-bold bg-gradient-to-r from-amber-600 to-orange-500 bg-clip-text text-transparent">
+          <span className="text-lg font-bold text-orange-500">
             Menu
           </span>
           <button

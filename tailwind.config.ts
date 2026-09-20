@@ -23,8 +23,8 @@ const config: Config = {
           900: "#364fc7",
         },
         gradient: {
-          start: "#f59e0b",
-          end: "#ea580c",
+          start: "#f97316",
+          end: "#f97316",
         },
       },
     },

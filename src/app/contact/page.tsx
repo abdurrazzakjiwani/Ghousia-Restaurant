@@ -1,4 +1,5 @@
-import { Phone } from "lucide-react";
+import Link from "next/link";
+import { Phone, MapPin, Calendar, Store } from "lucide-react";
 import ContactForm from "@/components/contact/ContactForm";
 
 export default function ContactPage() {
@@ -26,7 +27,7 @@ export default function ContactPage() {
             href={`tel:${phone1}`}
             className="card p-6 flex items-center gap-4 hover:shadow-lg transition-shadow"
           >
-            <div className="w-12 h-12 rounded-full bg-gradient-to-r from-gradient-start to-gradient-end flex items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center">
               <Phone className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -38,7 +39,7 @@ export default function ContactPage() {
             href={`tel:${phone2}`}
             className="card p-6 flex items-center gap-4 hover:shadow-lg transition-shadow"
           >
-            <div className="w-12 h-12 rounded-full bg-gradient-to-r from-gradient-start to-gradient-end flex items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center">
               <Phone className="w-5 h-5 text-white" />
             </div>
             <div>
@@ -61,6 +62,62 @@ export default function ContactPage() {
               Chat on WhatsApp
             </a>
           </div>
+        </div>
+      </div>
+
+      <div className="mt-16">
+        <h2 className="text-2xl font-bold text-center mb-8">Find Us</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Link
+            href="/branches"
+            className="card p-6 flex items-center gap-4 hover:shadow-lg transition-shadow group"
+          >
+            <div className="w-14 h-14 rounded-full bg-orange-500 flex items-center justify-center flex-shrink-0">
+              <Store className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                Our Branches
+              </h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                3 locations across Karachi
+              </p>
+            </div>
+          </Link>
+
+          <Link
+            href="/location"
+            className="card p-6 flex items-center gap-4 hover:shadow-lg transition-shadow group"
+          >
+            <div className="w-14 h-14 rounded-full bg-orange-500 flex items-center justify-center flex-shrink-0">
+              <MapPin className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                Location & Map
+              </h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                View us on Google Maps
+              </p>
+            </div>
+          </Link>
+
+          <Link
+            href="/reservation"
+            className="card p-6 flex items-center gap-4 hover:shadow-lg transition-shadow group"
+          >
+            <div className="w-14 h-14 rounded-full bg-orange-500 flex items-center justify-center flex-shrink-0">
+              <Calendar className="w-6 h-6 text-white" />
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                Reserve a Table
+              </h3>
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                Book your dining experience
+              </p>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

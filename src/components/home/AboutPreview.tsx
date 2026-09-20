@@ -1,10 +1,29 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { fadeInUp } from "@/lib/animations";
+import { useCountUp } from "@/hooks/useCountUp";
+
+function StatNumber({ value, label }: { value: number; label: string }) {
+  const { ref, count } = useCountUp({ end: value });
+  return (
+    <div className="p-4" ref={ref}>
+      <p className="text-3xl font-bold text-orange-500" style={{ fontFamily: 'var(--font-dm-sans), system-ui, sans-serif' }}>{count}+</p>
+      <p className="text-gray-500 text-sm">{label}</p>
+    </div>
+  );
+}
 
 export default function AboutPreview() {
   return (
     <section className="py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+          variants={fadeInUp}
+          initial="visible"
+        >
           <div>
             <h2 className="text-3xl font-bold mb-6">Our Story</h2>
             <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
@@ -31,27 +50,21 @@ export default function AboutPreview() {
               Learn More About Us →
             </Link>
           </div>
-          <div className="bg-gradient-to-br from-gradient-start to-gradient-end rounded-2xl p-8 text-white">
+          <div className="bg-white rounded-2xl shadow-md border-l-4 border-orange-500 p-8">
             <div className="grid grid-cols-2 gap-4 text-center">
+              <StatNumber value={39} label="Menu Items" />
+              <StatNumber value={13} label="Categories" />
               <div className="p-4">
-                <p className="text-3xl font-bold">39+</p>
-                <p className="text-white/80 text-sm">Menu Items</p>
+                <p className="text-3xl font-bold text-orange-500" style={{ fontFamily: 'var(--font-dm-sans), system-ui, sans-serif' }}>5:30 PM</p>
+                <p className="text-gray-500 text-sm">Open Daily</p>
               </div>
               <div className="p-4">
-                <p className="text-3xl font-bold">13</p>
-                <p className="text-white/80 text-sm">Categories</p>
-              </div>
-              <div className="p-4">
-                <p className="text-3xl font-bold">5:30 PM</p>
-                <p className="text-white/80 text-sm">Open Daily</p>
-              </div>
-              <div className="p-4">
-                <p className="text-3xl font-bold">All KHI</p>
-                <p className="text-white/80 text-sm">Delivery Areas</p>
+                <p className="text-3xl font-bold text-orange-500" style={{ fontFamily: 'var(--font-dm-sans), system-ui, sans-serif' }}>All KHI</p>
+                <p className="text-gray-500 text-sm">Delivery Areas</p>
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

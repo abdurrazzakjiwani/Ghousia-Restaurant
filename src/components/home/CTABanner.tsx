@@ -9,7 +9,7 @@ export default function CTABanner() {
 
   return (
     <section className="py-16 bg-white text-gray-950 dot-pattern">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-950">Ready to Order?</h2>
         <p className="text-lg text-gray-900 mb-2">
           Call us at <a href={`tel:${phone.replace(/-/g, "")}`} className="font-bold underline">{phone}</a>
@@ -24,7 +24,7 @@ export default function CTABanner() {
             </Button>
           </a>
           <Link href="/reservation">
-            <Button variant="secondary" size="lg" className="border-white text-white hover:bg-white/20">
+            <Button size="lg" className="bg-orange-500 hover:bg-orange-600 text-white">
               Reserve a Table
             </Button>
           </Link>
