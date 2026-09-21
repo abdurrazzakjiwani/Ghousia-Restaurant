@@ -11,8 +11,6 @@ import { CartProvider } from "@/contexts/CartContext";
 import GroqChatWidget from "@/components/chat/GroqChatWidget";
 import BackToTop from "@/components/ui/BackToTop";
 import PageTransition from "@/components/layout/PageTransition";
-import LocationPrompt from "@/components/ui/LocationPrompt";
-
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const poppins = Poppins({
   subsets: ["latin"],
@@ -43,7 +41,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} ${poppins.variable} ${dmSans.variable}`}>
-        <LocationPrompt />
         <ThemeProvider>
           <ChatProvider>
             <CartProvider>

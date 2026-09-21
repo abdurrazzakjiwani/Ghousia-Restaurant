@@ -50,18 +50,21 @@ const faqs = [
 
 function FAQItem({ faq, isOpen, onToggle }: { faq: typeof faqs[0]; isOpen: boolean; onToggle: () => void }) {
   return (
-    <motion.div className="border-b border-gray-200 dark:border-gray-800" variants={staggerItem}>
+    <motion.div
+      className="bg-gray-50 dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-5 hover:shadow-md hover:border-orange-300 dark:hover:border-orange-600 transition-all"
+      variants={staggerItem}
+    >
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between py-4 text-left group"
+        className="w-full flex items-center justify-between text-left group"
       >
-        <span className="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-gradient-start transition-colors">
+        <span className="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-gradient-start transition-colors pr-4">
           {faq.question}
         </span>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.2 }}
-          className="shrink-0 ml-4"
+          className="shrink-0"
         >
           <ChevronDown className="w-5 h-5 text-gray-500" />
         </motion.div>
@@ -75,7 +78,7 @@ function FAQItem({ faq, isOpen, onToggle }: { faq: typeof faqs[0]; isOpen: boole
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <p className="pb-4 text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            <p className="pt-3 text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
               {faq.answer}
             </p>
           </motion.div>
@@ -107,6 +110,7 @@ export default function FAQSection() {
         </motion.div>
 
         <motion.div
+          className="flex flex-col gap-4"
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}

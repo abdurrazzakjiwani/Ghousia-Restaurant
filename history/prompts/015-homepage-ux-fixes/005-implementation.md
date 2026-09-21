@@ -48,7 +48,9 @@ Implemented all 11 tasks:
 - ✅ Impact: All 11 tasks completed, build successful
 - 🧪 Tests: Build verification passed (19 routes generated)
 - 📁 Files: 8 files modified
-- 🔁 Next prompts: Deploy to Vercel
+- 🔗 PR: https://github.com/abdurrazzakjiwani/Ghousia-Restaurant/pull/new/015-homepage-ux-fixes
+- 🌐 Deploy: https://ghousiagoldenweb.vercel.app
+- 🔁 Next prompts: None - feature complete
 - 🧠 Reflection: Pre-existing ESLint config issue noted (ESLint 9.0 needs eslint.config.js)
 
 ## Evaluation notes (flywheel)

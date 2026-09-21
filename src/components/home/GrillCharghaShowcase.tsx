@@ -61,12 +61,6 @@ export default function GrillCharghaShowcase() {
             />
           </div>
 
-          <div
-              className="absolute inset-0 rounded-full overflow-hidden plate"
-              style={{
-                animation: "plate-spin 8s linear infinite",
-              }}
-            />
             <div className="text-center md:text-left max-w-md">
             <h3 className="text-2xl font-bold mb-2">{charghaItem.name}</h3>
             <p className="text-gray-600 mb-4">
@@ -85,20 +79,6 @@ export default function GrillCharghaShowcase() {
         </motion.div>
       </div>
 
-      <style jsx>{`
-        @keyframes plate-spin {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .plate { animation: none; }
-        }
-      `}</style>
     </section>
   );
 }
