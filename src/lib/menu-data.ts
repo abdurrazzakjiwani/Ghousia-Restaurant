@@ -38,13 +38,13 @@ export const menuItems: MenuItem[] = [
   { id: "211", category_id: "2", name: "Club Cheese Sandwich", description: "Club sandwich with extra cheese", price: 520, image_url: "/images/food/sandwiches/Club Cheese Sandwitch.avif", is_available: true, is_featured: false, created_at: "" },
 
   // Broast (4)
-  { id: "301", category_id: "3", name: "Fried Chicken Breast Broast", description: "Crispy fried chicken breast piece", price: 900, image_url: "/images/food/broast/Fried chicken breast broast.jpg", is_available: true, is_featured: true, created_at: "" },
+  { id: "301", category_id: "3", name: "Fried Chicken Breast Broast", description: "Crispy fried chicken breast piece", price: 900, image_url: "/images/food/broast/Fried chicken breast broast.jpg", is_available: true, is_featured: false, created_at: "" },
   { id: "302", category_id: "3", name: "Chatpata Masala Broast", description: "Spiced masala broast chicken", price: 950, image_url: "/images/food/broast/Chatpata Masala Broast.webp", is_available: true, is_featured: false, created_at: "" },
   { id: "303", category_id: "3", name: "Dynamite Chicken Broast", description: "Fiery dynamite flavored broast", price: 1000, image_url: "/images/food/broast/Dynamite Chicken Broast.webp", is_available: true, is_featured: false, created_at: "" },
   { id: "304", category_id: "3", name: "Fried Chicken Leg Broast", description: "Crispy fried chicken leg piece", price: 550, image_url: "/images/food/broast/Fried Chicken Leg Broast.webp", is_available: true, is_featured: false, created_at: "" },
 
   // BBQ (16)
-  { id: "401", category_id: "4", name: "BBQ Platter", description: "Mixed BBQ platter with naan", price: 1500, image_url: "/images/food/bbq/BBQ Platter.png", is_available: true, is_featured: true, created_at: "" },
+  { id: "401", category_id: "4", name: "BBQ Platter", description: "Mixed BBQ platter with naan", price: 1500, image_url: "/images/food/bbq/BBQ Platter.png", is_available: true, is_featured: false, created_at: "" },
   { id: "402", category_id: "4", name: "BBQ Sauce", description: "House-made BBQ dipping sauce", price: 100, image_url: "/images/food/bbq/BBQ Sauce.png", is_available: true, is_featured: false, created_at: "" },
   { id: "403", category_id: "4", name: "Beef Bihari Boti", description: "Tender beef boti with Bihari spices", price: 1200, image_url: "/images/food/bbq/Beef Bihari Boti.png", is_available: true, is_featured: false, created_at: "" },
   { id: "404", category_id: "4", name: "Beef Dhaga Kabab", description: "Thread-wrapped beef kabab", price: 1100, image_url: "/images/food/bbq/Beef Dhaga Kabab.png", is_available: true, is_featured: false, created_at: "" },
@@ -65,7 +65,7 @@ export const menuItems: MenuItem[] = [
   { id: "501", category_id: "5", name: "Grill Chargha", description: "Whole grilled chicken with spices", price: 1100, image_url: "/images/food/chargha/Grill Chargha.png", is_available: true, is_featured: true, created_at: "" },
 
   // Karahi (6)
-  { id: "601", category_id: "6", name: "Boneless Chicken Red Karahi", description: "Boneless chicken in red tomato karahi", price: 1600, image_url: "/images/food/karahi/Boneless Chicken Red Karahi.png", is_available: true, is_featured: true, created_at: "" },
+  { id: "601", category_id: "6", name: "Boneless Chicken Red Karahi", description: "Boneless chicken in red tomato karahi", price: 1600, image_url: "/images/food/karahi/Boneless Chicken Red Karahi.png", is_available: true, is_featured: false, created_at: "" },
   { id: "602", category_id: "6", name: "Boneless Chicken White Karahi", description: "Boneless chicken in creamy white karahi", price: 1600, image_url: "/images/food/karahi/Boneless Chicken White Karahi.png", is_available: true, is_featured: false, created_at: "" },
   { id: "603", category_id: "6", name: "Chicken Green Karahi", description: "Chicken karahi with green herbs", price: 1400, image_url: "/images/food/karahi/Chicken Green Karahi.png", is_available: true, is_featured: false, created_at: "" },
   { id: "604", category_id: "6", name: "Chicken Red Karahi", description: "Traditional chicken red karahi", price: 1400, image_url: "/images/food/karahi/Chicken Red Karahi.png", is_available: true, is_featured: false, created_at: "" },
@@ -78,7 +78,7 @@ export const menuItems: MenuItem[] = [
   { id: "703", category_id: "7", name: "Boneless Chicken Kashmiri Handi", description: "Kashmiri-style boneless chicken handi", price: 1600, image_url: "/images/food/handi/Boneless Chicken Kashmiri Handi.png", is_available: true, is_featured: false, created_at: "" },
 
   // Chinese (11)
-  { id: "801", category_id: "8", name: "Chicken Chilli with Rice", description: "Spicy chicken chilli with steamed rice", price: 800, image_url: "/images/food/chinese/Chicken Chilli with rice.png", is_available: true, is_featured: true, created_at: "" },
+  { id: "801", category_id: "8", name: "Chicken Chilli with Rice", description: "Spicy chicken chilli with steamed rice", price: 800, image_url: "/images/food/chinese/Chicken Chilli with rice.png", is_available: true, is_featured: false, created_at: "" },
   { id: "802", category_id: "8", name: "Chicken Dry Chilli with Rice", description: "Dry chicken chilli with rice", price: 800, image_url: "/images/food/chinese/Chicken Dry Chilli with rice.png", is_available: true, is_featured: false, created_at: "" },
   { id: "803", category_id: "8", name: "Chicken Fried Rice", description: "Classic chicken fried rice", price: 650, image_url: "/images/food/chinese/Chicken Fried Rice.png", is_available: true, is_featured: false, created_at: "" },
   { id: "804", category_id: "8", name: "Chicken Ginger with Rice", description: "Ginger chicken with steamed rice", price: 750, image_url: "/images/food/chinese/Chicken Ginger with rice.png", is_available: true, is_featured: false, created_at: "" },
@@ -112,7 +112,7 @@ export const menuItems: MenuItem[] = [
   { id: "919", category_id: "9", name: "Zinger Roll", description: "Crispy zinger chicken paratha roll", price: 400, image_url: "/images/food/rolls/Zinger roll.png", is_available: true, is_featured: false, created_at: "" },
 
   // Pasta (2)
-  { id: "1001", category_id: "10", name: "Chicken Creamy Pasta", description: "Creamy white sauce chicken pasta", price: 700, image_url: "/images/food/pasta/Chicken creamy pasta.png", is_available: true, is_featured: true, created_at: "" },
+  { id: "1001", category_id: "10", name: "Chicken Creamy Pasta", description: "Creamy white sauce chicken pasta", price: 700, image_url: "/images/food/pasta/Chicken creamy pasta.png", is_available: true, is_featured: false, created_at: "" },
   { id: "1002", category_id: "10", name: "Chicken Pasta", description: "Classic chicken pasta", price: 700, image_url: "/images/food/pasta/Chicken Pasta.png", is_available: true, is_featured: false, created_at: "" },
 
   // Extras (4)
@@ -122,11 +122,11 @@ export const menuItems: MenuItem[] = [
   { id: "1104", category_id: "11", name: "Salad", description: "Fresh green salad", price: 100, image_url: "/images/food/extras/Salad.png", is_available: true, is_featured: false, created_at: "" },
 
   // Paratha & Breads (2)
-  { id: "1201", category_id: "12", name: "Puri Paratha", description: "Crispy layered puri paratha", price: 120, image_url: "/images/food/paratha-breads/Puri Paratha.png", is_available: true, is_featured: true, created_at: "" },
+  { id: "1201", category_id: "12", name: "Puri Paratha", description: "Crispy layered puri paratha", price: 120, image_url: "/images/food/paratha-breads/Puri Paratha.png", is_available: true, is_featured: false, created_at: "" },
   { id: "1202", category_id: "12", name: "Roghni Kulcha", description: "Soft roghni kulcha bread", price: 100, image_url: "/images/food/paratha-breads/Roghni Kulcha.png", is_available: true, is_featured: false, created_at: "" },
 
   // Desserts (1)
-  { id: "1301", category_id: "13", name: "Halwa", description: "Traditional sweet halwa", price: 150, image_url: "/images/food/desserts/Halwa.png", is_available: true, is_featured: true, created_at: "" },
+  { id: "1301", category_id: "13", name: "Halwa", description: "Traditional sweet halwa", price: 150, image_url: "/images/food/desserts/Halwa.png", is_available: true, is_featured: false, created_at: "" },
 ];
 
 export function getItemsByCategory(categorySlug: string): MenuItem[] {

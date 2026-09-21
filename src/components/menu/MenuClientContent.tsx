@@ -4,22 +4,53 @@ import { useState, useMemo, useEffect, useCallback } from "react";
 import { Search } from "lucide-react";
 import { menuItems, getItemsByCategory, searchItems } from "@/lib/menu-data";
 import { useCart } from "@/hooks/useCart";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import CategoryFilter from "@/components/menu/CategoryFilter";
 import MenuGrid from "@/components/menu/MenuGrid";
 import MenuItemModal from "@/components/menu/MenuItemModal";
 import { MenuItem } from "@/types";
 import Link from "next/link";
 
+function getSearchParams() {
+  if (typeof window === "undefined") return new URLSearchParams();
+  return new URLSearchParams(window.location.search);
+}
+
 export default function MenuClientContent() {
-  const searchParams = useSearchParams();
   const router = useRouter();
-  const highlightId = searchParams.get("highlight");
-  const categoryParam = searchParams.get("category");
-  const [selectedCategory, setSelectedCategory] = useState(categoryParam || "all");
+  const [highlightId, setHighlightId] = useState<string | null>(null);
+  const [categoryParam, setCategoryParam] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
   const { addItem, items: cartItems, updateQuantity } = useCart();
+
+  useEffect(() => {
+    const params = getSearchParams();
+    setHighlightId(params.get("highlight"));
+    const cat = params.get("category");
+    setCategoryParam(cat);
+    if (cat) {
+      setSelectedCategory(cat);
+    } else {
+      setSelectedCategory("all");
+    }
+  }, []);
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      const params = getSearchParams();
+      const cat = params.get("category");
+      setCategoryParam(cat);
+      if (cat) {
+        setSelectedCategory(cat);
+      } else {
+        setSelectedCategory("all");
+      }
+    };
+    window.addEventListener("popstate", handleRouteChange);
+    return () => window.removeEventListener("popstate", handleRouteChange);
+  }, []);
 
   const filteredItems = useMemo(() => {
     if (searchQuery) {
@@ -82,6 +113,19 @@ export default function MenuClientContent() {
     window.location.href = "/order";
   };
 
+  const handleCategorySelect = useCallback((slug: string) => {
+    setSelectedCategory(slug);
+    setSearchQuery("");
+    const params = getSearchParams();
+    if (slug === "all") {
+      params.delete("category");
+    } else {
+      params.set("category", slug);
+    }
+    const newUrl = params.toString() ? `/menu?${params.toString()}` : "/menu";
+    router.push(newUrl, { scroll: false });
+  }, [router]);
+
   const scrollToHighlight = useCallback(() => {
     if (!highlightId) return;
     setTimeout(() => {
@@ -99,27 +143,6 @@ export default function MenuClientContent() {
   useEffect(() => {
     scrollToHighlight();
   }, [scrollToHighlight]);
-
-  const handleCategorySelect = useCallback((slug: string) => {
-    setSelectedCategory(slug);
-    setSearchQuery("");
-    const params = new URLSearchParams(searchParams.toString());
-    if (slug === "all") {
-      params.delete("category");
-    } else {
-      params.set("category", slug);
-    }
-    router.push(`/menu?${params.toString()}`, { scroll: false });
-  }, [router, searchParams]);
-
-  useEffect(() => {
-    if (categoryParam) {
-      setSelectedCategory(categoryParam);
-      setSearchQuery("");
-    } else {
-      setSelectedCategory("all");
-    }
-  }, [categoryParam]);
 
   return (
     <>

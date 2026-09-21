@@ -20,6 +20,8 @@ Auto-generated from all feature plans. Last updated: 2026-09-14
 - N/A (no data changes) (001-ui-fixes)
 - [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION] + [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION] (001-location-dish-theme)
 - [if applicable, e.g., PostgreSQL, CoreData, files or N/A] (001-location-dish-theme)
+- TypeScript 5.x, Node.js 18+ + Next.js 16 (App Router), React 19, Tailwind CSS 4, Motion (framer-motion) (015-homepage-ux-fixes)
+- localStorage for cart (existing), static menu data (015-homepage-ux-fixes)
 
 - TypeScript 5.x, Node.js 18+ + Next.js 14 (App Router), Tailwind CSS, Supabase JS Client, Groq SDK, Lucide React (001-restaurant-website)
 - TypeScript 5.x, Node.js 18+ + Next.js 14 (App Router), React 18.3, Tailwind CSS 3.x, Framer Motion 13.3.0, Lucide React, next/font/google (Poppins, Inter) (001-restaurant-redesign)
@@ -42,9 +44,9 @@ npm test; npm run lint
 TypeScript 5.x, Node.js 18+: Follow standard conventions
 
 ## Recent Changes
+- 015-homepage-ux-fixes: Added TypeScript 5.x, Node.js 18+ + Next.js 16 (App Router), React 19, Tailwind CSS 4, Motion (framer-motion)
 - 013-ui-styling-updates: Added TypeScript 5.x, Node.js 18+ + Next.js 14 (App Router), React 18.3, Tailwind CSS 3.x, Framer Motion 13.3.0
 - 001-location-dish-theme: Added [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION] + [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]
-- 012-about-page-redesign: Added TypeScript 5.x, Node.js 18+ + Next.js 14 (App Router), React 18.3, Tailwind CSS 3.x, Framer Motion 13.3.0, Lucide React
 
 
 <!-- MANUAL ADDITIONS START -->
