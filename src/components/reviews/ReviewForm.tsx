@@ -65,7 +65,7 @@ export default function ReviewForm() {
               onMouseEnter={() => setHoverRating(star)}
               onMouseLeave={() => setHoverRating(0)}
               onClick={() => setForm({ ...form, rating: star })}
-              className="p-0.5"
+              className="p-1.5 min-w-[44px] min-h-[44px] flex items-center justify-center"
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
             >

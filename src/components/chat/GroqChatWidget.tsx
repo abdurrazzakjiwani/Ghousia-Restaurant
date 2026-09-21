@@ -63,7 +63,7 @@ export default function GroqChatWidget() {
           <div
             ref={messagesContainerRef}
             onScroll={handleScroll}
-            className="flex-1 min-h-0 max-h-[320px] overflow-y-auto p-4 space-y-3 chat-scroll relative"
+            className="flex-1 min-h-0 max-h-[min(50vh,400px)] overflow-y-auto p-4 space-y-3 chat-scroll relative"
           >
             {messages.length === 0 && (
               <div className="text-center text-gray-400 text-sm py-8">

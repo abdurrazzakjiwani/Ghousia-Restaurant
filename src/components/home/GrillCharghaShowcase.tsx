@@ -35,9 +35,9 @@ export default function GrillCharghaShowcase() {
           whileInView="visible"
           viewport={viewportConfig}
           variants={fadeInUp}
-          className="flex flex-col md:flex-row items-center justify-center gap-12"
+          className="flex flex-col md:flex-row items-center justify-center gap-8 sm:gap-12"
         >
-          <div className="relative w-72 h-72 md:w-96 md:h-96">
+          <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-96 md:h-96">
             <div
               className="absolute inset-0 rounded-full overflow-hidden"
             >
@@ -50,14 +50,14 @@ export default function GrillCharghaShowcase() {
                   className="object-cover"
                 />
               ) : (
-                <div className="w-full h-full bg-linear-to-br from-gradient-start to-gradient-end flex items-center justify-center">
+                  <div className="w-full h-full bg-orange-500 flex items-center justify-center">
                   <span className="text-6xl">🍗</span>
                 </div>
               )}
             </div>
 
-            <div
-              className="absolute inset-0 rounded-full border-4 border-dashed border-gradient-start/30"
+              <div
+              className="absolute inset-0 rounded-full border-4 border-dashed border-orange-500/30"
             />
           </div>
 
@@ -66,12 +66,12 @@ export default function GrillCharghaShowcase() {
             <p className="text-gray-600 mb-4">
               {charghaItem.description}
             </p>
-            <p className="text-2xl font-bold bg-linear-to-r from-gradient-start to-gradient-end bg-clip-text text-transparent mb-6">
+              <p className="text-2xl font-bold text-orange-600 mb-6">
               {formatPrice(charghaItem.price)}
             </p>
-            <Link
+              <Link
               href="/menu?category=chargha"
-              className="inline-flex items-center px-6 py-3 rounded-xl bg-linear-to-r from-gradient-start to-gradient-end text-white font-semibold hover:opacity-90 transition-opacity"
+              className="inline-flex items-center px-6 py-3 rounded-xl bg-orange-500 text-white font-semibold hover:opacity-90 transition-opacity"
             >
               Order Now
             </Link>

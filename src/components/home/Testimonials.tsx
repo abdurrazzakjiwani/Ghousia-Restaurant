@@ -46,6 +46,7 @@ function ColoredAvatar({ index, name }: { index: number; name: string }) {
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [maxDots, setMaxDots] = useState(20);
 
   const next = useCallback(() => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -64,6 +65,7 @@ export default function Testimonials() {
   useEffect(() => {
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (prefersReduced) setIsPaused(true);
+    setMaxDots(window.innerWidth < 640 ? 8 : 20);
   }, []);
 
   const testimonial = testimonials[currentIndex];
@@ -86,14 +88,14 @@ export default function Testimonials() {
           <div className="card p-8 relative min-h-[220px] group">
             <button
               onClick={() => { prev(); setIsPaused(true); setTimeout(() => setIsPaused(false), 4000); }}
-              className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors opacity-0 group-hover:opacity-100 md:opacity-0 hover:!opacity-100 focus:opacity-100 active:opacity-100 z-10"
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors opacity-60 md:opacity-0 md:group-hover:opacity-100 hover:!opacity-100 focus:opacity-100 active:opacity-100 z-10"
               aria-label="Previous testimonial"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
             <button
               onClick={() => { next(); setIsPaused(true); setTimeout(() => setIsPaused(false), 4000); }}
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors opacity-0 group-hover:opacity-100 md:opacity-0 hover:!opacity-100 focus:opacity-100 active:opacity-100 z-10"
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors opacity-60 md:opacity-0 md:group-hover:opacity-100 hover:!opacity-100 focus:opacity-100 active:opacity-100 z-10"
               aria-label="Next testimonial"
             >
               <ChevronRight className="w-4 h-4" />
@@ -131,8 +133,8 @@ export default function Testimonials() {
             </AnimatePresence>
           </div>
 
-          <div className="flex justify-center gap-2 mt-6 overflow-x-auto">
-            {testimonials.slice(0, typeof window !== "undefined" && window.innerWidth < 640 ? 8 : 20).map((_, i) => (
+          <div className="flex justify-center gap-2 mt-6 overflow-hidden">
+            {testimonials.slice(0, maxDots).map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentIndex(i)}

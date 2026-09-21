@@ -17,13 +17,42 @@
   --color-gradient-end: #dc2626;
 }
 
-html {
-  overflow-x: hidden;
-}
-
 body {
   @apply bg-white text-gray-900 leading-relaxed;
   font-family: var(--font-inter), system-ui, sans-serif;
+  overflow-x: clip;
+}
+
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@utility safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@utility text-responsive-sm {
+  @apply text-sm md:text-base;
+}
+
+@utility text-responsive-base {
+  @apply text-base md:text-lg;
+}
+
+@utility text-responsive-lg {
+  @apply text-lg md:text-xl;
+}
+
+@utility text-responsive-xl {
+  @apply text-xl md:text-2xl;
+}
+
+@utility text-responsive-2xl {
+  @apply text-2xl md:text-3xl;
+}
+
+@utility text-responsive-3xl {
+  @apply text-3xl md:text-4xl lg:text-5xl;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -37,10 +66,16 @@ h1, h2, h3, h4, h5, h6 {
 
 @utility btn-secondary {
   @apply border border-gray-300 px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors;
+  &:where(.dark, .dark *) {
+    @apply border-gray-600 hover:bg-gray-800 text-gray-200;
+  }
 }
 
 @utility card {
   @apply bg-white rounded-xl shadow-md border border-gray-100;
+  &:where(.dark, .dark *) {
+    @apply bg-gray-900 border-gray-800;
+  }
 }
 
 @utility text-balance {
@@ -133,11 +168,6 @@ h1, h2, h3, h4, h5, h6 {
   animation: spin 1s linear infinite;
 }
 
-/* Dark mode body transition */
-body {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -147,6 +177,12 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  /* Framer Motion fallback: ensure content visible */
+  .motion-reduce {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
 
@@ -167,4 +203,20 @@ body {
 .dot-pattern {
   background-image: radial-gradient(#d1d5db 1px, transparent 1.5px);
   background-size: 16px 16px;
+}
+
+/* Focus-visible ring for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid #f97316;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #f97316;
+  outline-offset: 2px;
 }

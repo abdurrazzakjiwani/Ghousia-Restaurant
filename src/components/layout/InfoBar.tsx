@@ -14,7 +14,7 @@ export default function InfoBar({ phone, hours }: InfoBarProps) {
     : phone;
 
   return (
-    <div className="hidden sm:flex lg:flex items-center justify-between px-4 sm:px-6 lg:px-8 py-1.5 text-xs border-b border-gray-100 dark:border-gray-800/50 bg-gray-50/80 dark:bg-gray-900/60 text-gray-600 dark:text-gray-400">
+    <div className="flex lg:flex items-center justify-between px-4 sm:px-6 lg:px-8 py-1.5 text-xs border-b border-gray-100 dark:border-gray-800 bg-gray-50/80 dark:bg-gray-900/60 text-gray-600 dark:text-gray-400">
       <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
         <div className="flex items-center gap-4">
           <a
@@ -23,7 +23,7 @@ export default function InfoBar({ phone, hours }: InfoBarProps) {
             aria-label="Call restaurant"
           >
             <Phone className="w-3.5 h-3.5" />
-            <span>{formattedPhone}</span>
+            <span className="hidden sm:inline">{formattedPhone}</span>
           </a>
           <div className="hidden md:flex items-center gap-1.5">
             <Clock className="w-3.5 h-3.5" />

@@ -21,6 +21,16 @@ export default function CategoryFilter({
       viewport={viewportConfig}
       variants={fadeIn}
     >
+      <div className="absolute left-0 top-0 bottom-0 w-2 bg-gradient-to-r transparent amber-500 opacity-60 group-hover:opacity-100 transition-opacity">
+        <svg className="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M15 18l-6-6l6-6"/>
+        </svg>
+      </div>
+      <div className="absolute right-0 top-0 bottom-0 w-2 bg-gradient-to-l transparent amber-500 opacity-60 group-hover:opacity-100 transition-opacity">
+        <svg className="h-6 w-6 rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M9 6l6 6l-6 6"/>
+        </svg>
+      </div>
       <button
         onClick={() => onSelect("all")}
         className="relative px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap"

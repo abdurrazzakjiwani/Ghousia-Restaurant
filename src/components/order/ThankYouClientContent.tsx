@@ -80,9 +80,9 @@ export default function ThankYouClientContent() {
       <div className="card p-6 text-left space-y-4">
         <div className="flex justify-between items-center">
           <span className="text-gray-500 dark:text-gray-400">Order Number</span>
-          <span className="text-lg font-bold bg-linear-to-r from-gradient-start to-gradient-end bg-clip-text text-transparent">
-            {orderNumber}
-          </span>
+            <span className="text-lg font-bold text-orange-600">
+              {orderNumber}
+            </span>
         </div>
 
         {order && (
@@ -105,7 +105,7 @@ export default function ThankYouClientContent() {
 
             <div className="border-t border-gray-200 dark:border-gray-800 pt-4 flex justify-between items-center">
               <span className="font-bold">Total</span>
-              <span className="text-xl font-bold bg-linear-to-r from-gradient-start to-gradient-end bg-clip-text text-transparent">
+              <span className="text-xl font-bold text-orange-600">
                 Rs. {order.total_amount?.toLocaleString()}
               </span>
             </div>

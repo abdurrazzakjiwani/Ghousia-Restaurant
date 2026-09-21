@@ -46,9 +46,9 @@ function FeaturedCard({ item }: { item: ReturnType<typeof getFeaturedItems>[numb
       <p className="text-sm text-gray-500 dark:text-gray-400 mb-2 line-clamp-2">
         {item.description}
       </p>
-      <p className="text-lg font-bold bg-linear-to-r from-gradient-start to-gradient-end bg-clip-text text-transparent">
-        {formatPrice(item.price)}
-      </p>
+        <p className="text-lg font-bold text-orange-600">
+          {formatPrice(item.price)}
+        </p>
     </motion.div>
   );
 }
@@ -77,9 +77,9 @@ export default function FeaturedMenu() {
         </motion.div>
 
         <div className="text-center mt-10">
-          <Link
+            <Link
             href="/menu"
-            className="inline-flex items-center text-gradient-start hover:text-gradient-end font-semibold transition-colors"
+            className="inline-flex items-center text-orange-600 hover:text-orange-700 font-semibold transition-colors"
           >
             View Full Menu →
           </Link>

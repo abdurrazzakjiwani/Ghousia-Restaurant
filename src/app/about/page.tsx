@@ -305,7 +305,7 @@ export default function AboutPage() {
                 Reserve on WhatsApp
               </a>
             </div>
-            <div className="rounded-2xl overflow-hidden shadow-lg h-80 bg-gray-200 dark:bg-gray-800">
+            <div className="rounded-2xl overflow-hidden shadow-lg h-64 sm:h-80 bg-gray-200 dark:bg-gray-800">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.0!2d67.0!3d24.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sFederal%20B%20Area%2C%20Karachi!5e0!3m2!1sen!2spk!4v1"
                 width="100%"

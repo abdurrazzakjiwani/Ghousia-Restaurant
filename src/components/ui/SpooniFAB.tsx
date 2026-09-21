@@ -10,7 +10,7 @@ export default function SpooniFAB() {
   return (
     <motion.button
       onClick={toggleOpen}
-      className="fixed bottom-6 right-6 z-50 bg-linear-to-r from-gradient-start to-gradient-end text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-lg"
+      className="fixed bottom-6 right-6 z-50 bg-linear-to-r from-gradient-start to-gradient-end text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-lg safe-bottom"
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}

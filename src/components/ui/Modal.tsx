@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { useEffect, useRef, ReactNode } from "react";
+import { useRouter } from "next/navigation";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
@@ -21,6 +22,7 @@ export default function Modal({
   className,
 }: ModalProps) {
   const overlayRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -38,6 +40,40 @@ export default function Modal({
     if (isOpen) window.addEventListener("keydown", handleEsc);
     return () => window.removeEventListener("keydown", handleEsc);
   }, [isOpen, onClose]);
+
+  useEffect(() => {
+    function handleTab(e: KeyboardEvent) {
+      if (e.key === "Tab" && modalRef.current) {
+        const focusable = modalRef.current.querySelectorAll<HTMLElement>(
+          'button, a, [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
+    }
+    if (isOpen) {
+      document.addEventListener("keydown", handleTab);
+      setTimeout(() => {
+        const first = modalRef.current?.querySelector<HTMLElement>(
+          'button, a, [tabindex]:not([tabindex="-1"])'
+        );
+        first?.focus();
+      }, 50);
+    }
+    return () => document.removeEventListener("keydown", handleTab);
+  }, [isOpen]);
 
   return (
     <AnimatePresence>
@@ -68,7 +104,7 @@ export default function Modal({
                 <h2 className="text-lg font-semibold">{title}</h2>
                 <button
                   onClick={onClose}
-                  className="p-1 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                  className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors min-w-[44px] min-h-[44px]"
                 >
                   <X className="w-5 h-5" />
                 </button>

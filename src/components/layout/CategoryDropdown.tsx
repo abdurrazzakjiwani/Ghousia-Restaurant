@@ -66,12 +66,7 @@ export default function CategoryDropdown({
     >
       <Link
         href="/menu"
-        className={cn(
-          "px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1 focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:outline-none",
-          isOpen
-            ? "bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400"
-            : "hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300"
-        )}
+        className="px-3 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-1 focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:outline-none w-80 max-w-[calc(100vw-2rem)]"
         aria-label="Menu categories"
         aria-expanded={isOpen}
       >

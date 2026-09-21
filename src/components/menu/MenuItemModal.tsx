@@ -61,7 +61,7 @@ export default function MenuItemModal({
 
         <div>
           <h2 className="text-xl font-bold">{item.name}</h2>
-          <p className="text-lg font-bold bg-linear-to-r from-gradient-start to-gradient-end bg-clip-text text-transparent mt-1">
+          <p className="text-lg font-bold text-orange-600 mt-1">
             {formatPrice(item.price)}
           </p>
         </div>
@@ -93,12 +93,12 @@ export default function MenuItemModal({
         </div>
 
         <div className="flex gap-3 pt-2">
-          <button
-            onClick={() => {
-              onAddToCart(item, quantity);
-            }}
-            className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-linear-to-r from-gradient-start to-gradient-end text-white font-semibold hover:opacity-90 transition-opacity"
-          >
+            <button
+              onClick={() => {
+                onAddToCart(item, quantity);
+              }}
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-orange-500 text-white font-semibold hover:opacity-90 transition-opacity"
+            >
             <ShoppingCart className="w-4 h-4" />
             Add to Cart ({quantity})
           </button>

@@ -11,7 +11,7 @@ const navLinks = [
 
 export default function Navbar() {
   return (
-    <nav className="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-gray-200">
+    <nav className="sticky top-0 z-30 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
       <InfoBar phone="923013631555" hours="5:30 PM - 2:00 AM" />
       <MainNav
         navLinks={navLinks}

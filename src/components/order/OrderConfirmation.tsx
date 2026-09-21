@@ -79,12 +79,12 @@ export default function OrderConfirmation({
         {orderMode === "delivery" && latitude && longitude && (
           <div className="flex justify-between text-sm">
             <span className="text-gray-500">Location</span>
-            <a
-              href={`https://maps.google.com/?q=${latitude},${longitude}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gradient-start hover:text-gradient-end font-semibold text-xs"
-            >
+              <a
+                href={`https://maps.google.com/?q=${latitude},${longitude}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-orange-600 hover:text-orange-700 font-semibold text-xs"
+              >
               View on Map →
             </a>
           </div>
@@ -105,9 +105,9 @@ export default function OrderConfirmation({
         </div>
         <div className="border-t border-gray-200 dark:border-gray-700 mt-2 pt-2 flex justify-between font-bold">
           <span>Total</span>
-          <span className="bg-linear-to-r from-gradient-start to-gradient-end bg-clip-text text-transparent">
-            {formatPrice(totalAmount)}
-          </span>
+            <span className="text-orange-600">
+              {formatPrice(totalAmount)}
+            </span>
         </div>
       </div>
 

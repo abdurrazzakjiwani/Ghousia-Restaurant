@@ -54,7 +54,7 @@ export default function MenuCard({
       <div className="p-4">
         <div className="flex justify-between items-start mb-2">
           <h3 className="font-semibold text-sm">{item.name}</h3>
-          <span className="text-sm font-bold bg-linear-to-r from-gradient-start to-gradient-end bg-clip-text text-transparent whitespace-nowrap">
+            <span className="text-sm font-bold text-orange-600 whitespace-nowrap">
             {formatPrice(item.price)}
           </span>
         </div>
@@ -76,18 +76,18 @@ export default function MenuCard({
               <span className="text-sm font-semibold w-6 text-center">
                 {cartQuantity}
               </span>
-              <button
-                onClick={() => onUpdateQuantity(cartQuantity + 1)}
-                className="w-11 h-11 rounded-full bg-linear-to-r from-gradient-start to-gradient-end text-white flex items-center justify-center hover:opacity-90"
-              >
+            <button
+               onClick={() => onUpdateQuantity(cartQuantity + 1)}
+               className="w-11 h-11 rounded-full bg-orange-500 text-white flex items-center justify-center hover:opacity-90"
+             >
                 <Plus className="w-4 h-4" />
               </button>
             </div>
           ) : (
             <button
-              onClick={(e) => { e.stopPropagation(); onAdd(); }}
-              className="flex items-center gap-1 px-4 py-2.5 text-sm font-semibold rounded-full bg-linear-to-r from-gradient-start to-gradient-end text-white hover:opacity-90 transition-opacity"
-            >
+               onClick={(e) => { e.stopPropagation(); onAdd(); }}
+               className="flex items-center gap-1 px-4 py-2.5 text-sm font-semibold rounded-full bg-orange-500 text-white hover:opacity-90 transition-opacity"
+             >
               <Plus className="w-4 h-4" /> Add
             </button>
           )}

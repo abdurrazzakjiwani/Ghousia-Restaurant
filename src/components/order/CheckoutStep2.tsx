@@ -107,15 +107,15 @@ export default function CheckoutStep2({
         </div>
         <div className="border-t border-gray-200 dark:border-gray-800 pt-3 flex justify-between items-center">
           <span className="text-lg font-bold">Total</span>
-          <span className="text-xl font-bold bg-linear-to-r from-gradient-start to-gradient-end bg-clip-text text-transparent">
-            {formatPrice(total)}
-          </span>
+            <span className="text-xl font-bold text-orange-600">
+              {formatPrice(total)}
+            </span>
         </div>
       </div>
 
       <div className="card p-6 space-y-3">
         <h3 className="text-lg font-bold">Customer Details</h3>
-        <div className="grid grid-cols-2 gap-4 text-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
           <div>
             <span className="text-gray-500 dark:text-gray-400">Name</span>
             <p className="font-semibold">{details.customer_name}</p>
@@ -164,11 +164,11 @@ export default function CheckoutStep2({
           <ArrowLeft className="w-4 h-4" />
           Back
         </button>
-        <button
-          onClick={handlePlaceOrder}
-          disabled={isSubmitting}
-          className="flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-linear-to-r from-gradient-start to-gradient-end text-white font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
-        >
+            <button
+              onClick={handlePlaceOrder}
+              disabled={isSubmitting}
+              className="flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-orange-500 text-white font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
+            >
           {isSubmitting ? (
             <>
               <Loader2 className="w-5 h-5 animate-spin" />

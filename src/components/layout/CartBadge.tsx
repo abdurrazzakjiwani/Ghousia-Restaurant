@@ -21,7 +21,7 @@ export default function CartBadge() {
     >
       <ShoppingCart className="w-5 h-5 text-gray-700 dark:text-gray-300" />
       {mounted && itemCount > 0 && (
-        <span className="absolute -top-0.5 -right-0.5 flex items-center justify-center min-w-[18px] h-[18px] px-1 text-[10px] font-bold text-white bg-amber-500 rounded-full animate-bounce">
+          <span className="absolute -top-0.5 -right-0.5 flex items-center justify-center min-w-[20px] h-[20px] px-1 text-[11px] font-bold text-white bg-amber-500 rounded-full animate-bounce">
           {itemCount > 99 ? "99+" : itemCount}
         </span>
       )}

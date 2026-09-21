@@ -60,8 +60,8 @@ export default function MainNav({
             className={cn(
               "px-3 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:outline-none",
               pathname === "/"
-                ? "bg-amber-50 text-amber-600"
-                : "hover:bg-gray-100 text-gray-700"
+                ? "bg-amber-50 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400"
+                : "hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200"
             )}
           >
             Home
@@ -77,8 +77,8 @@ export default function MainNav({
               className={cn(
                 "px-3 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:outline-none",
                 pathname === link.href
-                  ? "bg-amber-50 text-amber-600"
-                  : "hover:bg-gray-100 text-gray-700"
+                  ? "bg-amber-50 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400"
+                  : "hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-200"
               )}
             >
               {link.label}
@@ -92,6 +92,7 @@ export default function MainNav({
         </div>
 
         <div className="flex md:hidden items-center gap-2">
+          {mounted && <CartBadge />}
           <a
             href="tel:923013631555"
             className="p-2 rounded-lg hover:bg-gray-100 text-gray-700 focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:outline-none"

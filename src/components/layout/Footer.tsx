@@ -23,7 +23,7 @@ export default function Footer() {
             <h3 className="text-lg font-bold text-white mb-4">
               Ghousia Golden Spoon
             </h3>
-            <p className="text-sm leading-relaxed">
+            <p className="text-sm leading-relaxed dark:text-gray-400">
               Authentic Pakistani cuisine with a modern touch. Serving Karachi&apos;s finest food since establishment.
             </p>
           </motion.div>
@@ -51,26 +51,26 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-sm">
                 <Phone className="w-4 h-4 shrink-0" />
-                <div>
-                  <a href={`tel:${phone1}`} className="hover:text-white">{phone1}</a>
+              <div className="flex flex-wrap items-center gap-y-1 text-sm">
+                  <a href={`tel:${phone1}`} className="hover:text-white dark:text-gray-400">{phone1}</a>
                   <span className="mx-1">|</span>
-                  <a href={`tel:${phone2}`} className="hover:text-white">{phone2}</a>
+                  <a href={`tel:${phone2}`} className="hover:text-white dark:text-gray-400">{phone2}</a>
                 </div>
               </div>
-              <div className="flex items-start gap-2 text-sm">
-                <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
-                <span>{address}</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm">
-                <Clock className="w-4 h-4 shrink-0" />
-                <span>{hours} (Daily)</span>
-              </div>
+<div className="flex items-start gap-2 text-sm dark:text-gray-400">
+                  <MapPin className="w-4 h-4 shrink-0 mt-0.5" />
+                  <span>{address}</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm dark:text-gray-400">
+                  <Clock className="w-4 h-4 shrink-0" />
+                  <span>{hours} (Daily)</span>
+                </div>
             </div>
           </motion.div>
         </motion.div>
 
         <div className="mt-10 pt-6 border-t border-gray-800 text-center text-sm">
-          <p>&copy; {new Date().getFullYear()} Ghousia Golden Spoon. All rights reserved.</p>
+          <p className="text-sm dark:text-gray-400">&copy; {new Date().getFullYear()} Ghousia Golden Spoon. All rights reserved.</p>
         </div>
       </motion.div>
     </footer>

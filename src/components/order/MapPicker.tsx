@@ -67,7 +67,7 @@ export default function MapPicker({ onLocationSelect, initialLat = 24.9, initial
       <div
         ref={mapRef}
         onClick={handleMapClick}
-        className="relative w-full h-64 bg-gray-200 dark:bg-gray-800 rounded-xl overflow-hidden cursor-crosshair border-2 border-dashed border-gray-400 dark:border-gray-600"
+        className="relative w-full h-48 sm:h-56 md:h-64 bg-gray-200 dark:bg-gray-800 rounded-xl overflow-hidden cursor-crosshair border-2 border-dashed border-gray-400 dark:border-gray-600"
       >
         <iframe
           src={mapUrl}

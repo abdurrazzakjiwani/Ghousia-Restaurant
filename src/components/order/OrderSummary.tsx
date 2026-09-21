@@ -89,7 +89,7 @@ export default function OrderSummary({
 
       <div className="border-t border-gray-200 dark:border-gray-800 pt-4 flex justify-between items-center">
         <span className="text-lg font-semibold">Total</span>
-        <span className="text-xl font-bold bg-linear-to-r from-gradient-start to-gradient-end bg-clip-text text-transparent">
+        <span className="text-xl font-bold text-orange-600">
           {formatPrice(total)}
         </span>
       </div>
