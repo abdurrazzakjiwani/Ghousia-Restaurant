@@ -50,3 +50,51 @@ export function generateChatOrderUrl(items: OrderIntentItem[]): string {
   const message = generateChatOrderMessage(items);
   return generateWhatsAppUrl(WHATSAPP_PHONE, message);
 }
+
+interface FullOrderMessageParams {
+  customer_name: string;
+  phone: string;
+  order_mode: "delivery" | "pickup" | "dine-in";
+  branch?: string;
+  address?: string;
+  latitude?: number;
+  longitude?: number;
+  items: { name: string; quantity: number; price: number }[];
+  total_amount: number;
+  notes?: string;
+}
+
+export function generateFullOrderMessage(order: FullOrderMessageParams): string {
+  let msg = "🍽️ NEW ORDER - Ghousia Golden Spoon\n\n";
+  msg += `👤 Customer: ${order.customer_name}\n`;
+  msg += `📞 Phone: ${order.phone}\n\n`;
+
+  if (order.order_mode === "delivery") {
+    msg += "📦 Mode: Delivery\n";
+    if (order.address) msg += `📍 Address: ${order.address}\n`;
+    if (order.latitude && order.longitude) {
+      msg += `🗺️ Map: https://maps.google.com/?q=${order.latitude},${order.longitude}\n`;
+    }
+  } else if (order.order_mode === "pickup") {
+    msg += "📦 Mode: Pickup\n";
+    if (order.branch) msg += `🏪 Branch: ${order.branch}\n`;
+  } else {
+    msg += "📦 Mode: Dine-in\n";
+    if (order.branch) msg += `🏪 Branch: ${order.branch}\n`;
+  }
+
+  msg += "\n📋 Items:\n";
+  order.items.forEach((item, i) => {
+    msg += `${i + 1}. ${item.name} x${item.quantity} = ${formatPrice(item.price * item.quantity)}\n`;
+  });
+
+  msg += `\n💰 Total: ${formatPrice(order.total_amount)}`;
+  if (order.notes) msg += `\n📝 Notes: ${order.notes}`;
+
+  return msg;
+}
+
+export function generateFullOrderUrl(order: FullOrderMessageParams): string {
+  const message = generateFullOrderMessage(order);
+  return generateWhatsAppUrl(WHATSAPP_PHONE, message);
+}

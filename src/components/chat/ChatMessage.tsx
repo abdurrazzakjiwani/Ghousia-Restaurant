@@ -2,6 +2,8 @@ import { cn } from "@/lib/utils";
 import { OrderIntentItem } from "@/types";
 import { formatPrice } from "@/lib/utils";
 import { MessageCircle } from "lucide-react";
+import { motion } from "motion/react";
+import { messageEntrance } from "@/lib/animations";
 
 interface ChatMessageProps {
   role: "user" | "assistant";
@@ -13,17 +15,20 @@ interface ChatMessageProps {
 
 export default function ChatMessage({ role, content, orderUrl, orderItems, orderTotal }: ChatMessageProps) {
   return (
-    <div
+    <motion.div
       className={cn(
         "flex w-full",
         role === "user" ? "justify-end" : "justify-start"
       )}
+      variants={messageEntrance}
+      initial="hidden"
+      animate="visible"
     >
       <div
         className={cn(
           "max-w-[80%] px-4 py-2.5 rounded-2xl text-sm leading-relaxed",
           role === "user"
-            ? "bg-gradient-to-r from-gradient-start to-gradient-end text-white rounded-br-sm"
+            ? "bg-linear-to-r from-gradient-start to-gradient-end text-white rounded-br-sm"
             : "bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-bl-sm"
         )}
       >
@@ -57,6 +62,6 @@ export default function ChatMessage({ role, content, orderUrl, orderItems, order
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

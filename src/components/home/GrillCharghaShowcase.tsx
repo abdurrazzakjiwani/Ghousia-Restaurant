@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { fadeInUp, viewportConfig } from "@/lib/animations";
 import { formatPrice } from "@/lib/utils";
 import { menuItems } from "@/lib/menu-data";
@@ -50,7 +50,7 @@ export default function GrillCharghaShowcase() {
                   className="object-cover"
                 />
               ) : (
-                <div className="w-full h-full bg-gradient-to-br from-gradient-start to-gradient-end flex items-center justify-center">
+                <div className="w-full h-full bg-linear-to-br from-gradient-start to-gradient-end flex items-center justify-center">
                   <span className="text-6xl">🍗</span>
                 </div>
               )}
@@ -72,12 +72,12 @@ export default function GrillCharghaShowcase() {
             <p className="text-gray-600 mb-4">
               {charghaItem.description}
             </p>
-            <p className="text-2xl font-bold bg-gradient-to-r from-gradient-start to-gradient-end bg-clip-text text-transparent mb-6">
+            <p className="text-2xl font-bold bg-linear-to-r from-gradient-start to-gradient-end bg-clip-text text-transparent mb-6">
               {formatPrice(charghaItem.price)}
             </p>
             <Link
-              href="/menu"
-              className="inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r from-gradient-start to-gradient-end text-white font-semibold hover:opacity-90 transition-opacity"
+              href="/menu?category=chargha"
+              className="inline-flex items-center px-6 py-3 rounded-xl bg-linear-to-r from-gradient-start to-gradient-end text-white font-semibold hover:opacity-90 transition-opacity"
             >
               Order Now
             </Link>

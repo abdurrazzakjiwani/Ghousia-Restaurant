@@ -3,6 +3,7 @@
 import { CartItem } from "@/types";
 import { formatPrice } from "@/lib/utils";
 import { Trash2, Plus, Minus } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 
 interface OrderSummaryProps {
   items: CartItem[];
@@ -30,11 +31,17 @@ export default function OrderSummary({
 
   return (
     <div className="space-y-4">
-      {items.map((item) => (
-        <div
-          key={item.menu_item_id}
-          className="flex items-center gap-4 p-4 card"
-        >
+      <AnimatePresence mode="popLayout">
+        {items.map((item) => (
+          <motion.div
+            key={item.menu_item_id}
+            layout
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20, height: 0, marginBottom: 0, padding: 0 }}
+            transition={{ duration: 0.3 }}
+            className="flex items-center gap-4 p-4 card"
+          >
           <div className="w-16 h-16 bg-gray-200 dark:bg-gray-800 rounded-lg flex items-center justify-center overflow-hidden shrink-0">
             {item.image_url ? (
               <img
@@ -76,12 +83,13 @@ export default function OrderSummary({
           >
             <Trash2 className="w-4 h-4" />
           </button>
-        </div>
-      ))}
+          </motion.div>
+        ))}
+      </AnimatePresence>
 
       <div className="border-t border-gray-200 dark:border-gray-800 pt-4 flex justify-between items-center">
         <span className="text-lg font-semibold">Total</span>
-        <span className="text-xl font-bold bg-gradient-to-r from-gradient-start to-gradient-end bg-clip-text text-transparent">
+        <span className="text-xl font-bold bg-linear-to-r from-gradient-start to-gradient-end bg-clip-text text-transparent">
           {formatPrice(total)}
         </span>
       </div>

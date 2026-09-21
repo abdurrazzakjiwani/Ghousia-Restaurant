@@ -2,6 +2,23 @@
 
 import { useState, FormEvent } from "react";
 import Button from "@/components/ui/Button";
+import { motion, AnimatePresence } from "motion/react";
+
+function AnimatedCheckmark() {
+  return (
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+      <circle cx="24" cy="24" r="22" stroke="#22c55e" strokeWidth="3" fill="none" />
+      <path
+        d="M14 24 L21 31 L34 18"
+        stroke="#22c55e"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="animate-draw-checkmark"
+      />
+    </svg>
+  );
+}
 
 export default function ReservationForm() {
   const [form, setForm] = useState({
@@ -110,12 +127,38 @@ export default function ReservationForm() {
           className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gradient-start text-sm resize-none"
         />
       </div>
-      {status === "success" && (
-        <p className="text-green-600 text-sm">Reservation submitted! We&apos;ll confirm shortly.</p>
-      )}
-      {status === "error" && <p className="text-red-600 text-sm">{errorMsg}</p>}
+      <AnimatePresence mode="wait">
+        {status === "success" && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="flex items-center gap-3 text-green-600"
+          >
+            <AnimatedCheckmark />
+            <span className="text-sm font-medium">Reservation submitted! We&apos;ll confirm shortly.</span>
+          </motion.div>
+        )}
+        {status === "error" && (
+          <motion.p
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -10 }}
+            className="text-red-600 text-sm animate-shake"
+          >
+            {errorMsg}
+          </motion.p>
+        )}
+      </AnimatePresence>
       <Button type="submit" disabled={status === "loading"}>
-        {status === "loading" ? "Booking..." : "Reserve Table"}
+        {status === "loading" ? (
+          <span className="flex items-center gap-2">
+            <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+            Booking...
+          </span>
+        ) : (
+          "Reserve Table"
+        )}
       </Button>
     </form>
   );

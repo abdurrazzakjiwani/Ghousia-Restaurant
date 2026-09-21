@@ -2,22 +2,31 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { motion } from "motion/react";
 import { getFeaturedItems } from "@/lib/menu-data";
 import { formatPrice } from "@/lib/utils";
+import { staggerContainer, staggerItem, fadeInUp } from "@/lib/animations";
 
 function FeaturedCard({ item }: { item: ReturnType<typeof getFeaturedItems>[number] }) {
   const [imgError, setImgError] = useState(false);
   const showImage = item.image_url && !imgError;
 
   return (
-    <div className="card p-4 hover:shadow-lg transition-shadow">
+    <motion.div
+      className="card p-4"
+      variants={staggerItem}
+      whileHover={{ scale: 1.02, boxShadow: "0 10px 40px rgba(0,0,0,0.12)" }}
+      transition={{ duration: 0.2, ease: "easeOut" }}
+    >
       <div className="aspect-square bg-gray-200 dark:bg-gray-800 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
         {showImage ? (
-          <img
+          <motion.img
             src={item.image_url!}
             alt={item.name}
             className="w-full h-full object-cover"
             onError={() => setImgError(true)}
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
           />
         ) : (
           <div className="flex flex-col items-center justify-center p-4 text-center">
@@ -30,10 +39,10 @@ function FeaturedCard({ item }: { item: ReturnType<typeof getFeaturedItems>[numb
       <p className="text-sm text-gray-500 dark:text-gray-400 mb-2 line-clamp-2">
         {item.description}
       </p>
-      <p className="text-lg font-bold bg-gradient-to-r from-gradient-start to-gradient-end bg-clip-text text-transparent">
+      <p className="text-lg font-bold bg-linear-to-r from-gradient-start to-gradient-end bg-clip-text text-transparent">
         {formatPrice(item.price)}
       </p>
-    </div>
+    </motion.div>
   );
 }
 
@@ -50,11 +59,15 @@ export default function FeaturedMenu() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          initial="visible"
+          variants={staggerContainer}
+        >
           {featured.map((item) => (
             <FeaturedCard key={item.id} item={item} />
           ))}
-        </div>
+        </motion.div>
 
         <div className="text-center mt-10">
           <Link

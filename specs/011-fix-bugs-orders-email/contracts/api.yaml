@@ -1,0 +1,134 @@
+# API Contracts: Bug Fixes, Order Persistence & Email Notifications
+
+**Feature**: 011-fix-bugs-orders-email
+**Date**: 2026-09-19
+
+---
+
+## POST /api/orders
+
+Create a new order and trigger email notifications.
+
+### Request Body
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| customer_name | string | Yes | Customer full name |
+| phone | string | Yes | Customer phone number |
+| customer_email | string | No | Customer email address |
+| order_mode | string | Yes | One of: delivery, pickup, dine-in |
+| branch | string | No | Branch name (for pickup/dine-in) |
+| address | string | No | Delivery address |
+| latitude | number | No | GPS latitude |
+| longitude | number | No | GPS longitude |
+| items | array | Yes | Array of {name, quantity, price} |
+| total_amount | number | Yes | Total in PKR |
+| notes | string | No | Special instructions |
+
+### Response (201 Created)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| id | string (uuid) | Order ID |
+| order_number | string | Format: GGS-YYYYMMDD-XXXX |
+| customer_name | string | Customer name |
+| phone | string | Phone number |
+| customer_email | string null | Email (if provided) |
+| order_mode | string | Order type |
+| branch | string null | Branch name |
+| address | string null | Delivery address |
+| items | array | Order items |
+| total_amount | number | Total in PKR |
+| order_status | string | Default: pending |
+| payment_method | string | Default: cash_on_delivery |
+| notes | string null | Special instructions |
+| created_at | string (ISO) | Creation timestamp |
+
+### Error Responses
+
+| Status | Code | Message |
+|--------|------|---------|
+| 400 | VALIDATION_ERROR | Name, phone, items, and order mode are required |
+| 400 | VALIDATION_ERROR | Order mode must be delivery, pickup, or dine-in |
+| 500 | SERVER_ERROR | Database error message |
+
+---
+
+## GET /api/orders
+
+Fetch orders by phone number or order number.
+
+### Query Parameters
+
+| Param | Type | Required | Description |
+|-------|------|----------|-------------|
+| phone | string | No* | Phone number to search |
+| order_number | string | No* | Order number to search |
+
+*At least one parameter is required.
+
+### Response (200 OK)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| orders | array | Array of order objects (max 10, newest first) |
+
+### Error Responses
+
+| Status | Code | Message |
+|--------|------|---------|
+| 400 | VALIDATION_ERROR | Phone number or order number is required |
+| 500 | SERVER_ERROR | Database error message |
+
+---
+
+## GET /api/orders?order_number=GGS-20260919-0001
+
+Fetch a single order by order number (used by tracking page).
+
+### Response (200 OK)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| orders | array | Single-element array with matching order |
+
+### Error Responses
+
+| Status | Code | Message |
+|--------|------|---------|
+| 400 | VALIDATION_ERROR | Order number is required |
+| 404 | NOT_FOUND | Order not found |
+| 500 | SERVER_ERROR | Database error message |
+
+---
+
+## POST /api/email/send
+
+Send an email notification (called internally, not exposed to frontend).
+
+### Request Body
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| to | string | Yes | Recipient email address |
+| subject | string | Yes | Email subject line |
+| order_number | string | Yes | Order reference number |
+
+### Response (200 OK)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| success | boolean | Whether email was sent |
+| messageId | string | Resend message ID (if successful) |
+
+### Error Responses
+
+| Status | Code | Message |
+|--------|------|---------|
+| 400 | VALIDATION_ERROR | Missing required fields |
+| 500 | EMAIL_ERROR | Failed to send email |
+
+### Notes
+
+- Email sending is non-blocking — order placement succeeds even if email fails
+- This endpoint is called by the order creation flow, not by the frontend directly

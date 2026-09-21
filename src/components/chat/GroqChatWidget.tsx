@@ -5,7 +5,7 @@ import { Send, ArrowDown, X } from "lucide-react";
 import { useChatContext } from "./ChatContext";
 import { useChat } from "@/hooks/useChat";
 import ChatMessage from "./ChatMessage";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { slideUp } from "@/lib/animations";
 
 export default function GroqChatWidget() {
@@ -50,7 +50,7 @@ export default function GroqChatWidget() {
           exit="exit"
           variants={slideUp}
         >
-          <div className="bg-gradient-to-r from-gradient-start to-gradient-end text-white px-4 py-3 flex items-center justify-between">
+          <div className="bg-linear-to-r from-gradient-start to-gradient-end text-white px-4 py-3 flex items-center justify-between">
             <div>
               <h3 className="font-semibold text-sm">Ghousia Assistant</h3>
               <p className="text-xs text-white/80">Ask about our menu or place an order</p>
@@ -102,7 +102,7 @@ export default function GroqChatWidget() {
               {!isNearBottom && (
                 <motion.button
                   onClick={scrollToBottom}
-                  className="sticky bottom-2 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-gradient-to-r from-gradient-start to-gradient-end text-white flex items-center justify-center shadow-lg mx-auto"
+                  className="sticky bottom-2 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full bg-linear-to-r from-gradient-start to-gradient-end text-white flex items-center justify-center shadow-lg mx-auto"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
@@ -129,7 +129,7 @@ export default function GroqChatWidget() {
               <button
                 onClick={handleSend}
                 disabled={isLoading || !input.trim()}
-                className="w-9 h-9 rounded-lg bg-gradient-to-r from-gradient-start to-gradient-end text-white flex items-center justify-center disabled:opacity-50"
+                className="w-9 h-9 rounded-lg bg-linear-to-r from-gradient-start to-gradient-end text-white flex items-center justify-center disabled:opacity-50"
               >
                 <Send className="w-4 h-4" />
               </button>

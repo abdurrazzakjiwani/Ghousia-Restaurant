@@ -131,7 +131,7 @@ description: "Task list for implementing Location, Signature Dish, CTA, and Ligh
 - [x] T033 Code cleanup and refactoring (remove unused imports, comments)
 - [x] T034 Run quickstart.md validation checklist manually
 - [x] T035 Verify all checklist items in `specs/001-location-dish-theme/checklists/requirements.md` are still PASS
-- [ ] T036 Commit changes with descriptive commit message
+- [x] T036 Commit changes with descriptive commit message
 
 ---
 

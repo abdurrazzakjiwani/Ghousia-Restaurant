@@ -21,6 +21,7 @@ export interface MenuItem {
 
 export interface Order {
   id: string;
+  order_number: string;
   customer_name: string;
   phone: string;
   email: string | null;
@@ -109,4 +110,23 @@ export interface OrderIntent {
   total: number;
   is_valid: boolean;
   unmatched_text: string | null;
+}
+
+export interface CustomerOrder {
+  id: string;
+  order_number: string;
+  customer_name: string;
+  phone: string;
+  customer_email: string | null;
+  order_mode: "delivery" | "pickup" | "dine-in";
+  branch: string | null;
+  address: string | null;
+  latitude: number | null;
+  longitude: number | null;
+  items: { name: string; quantity: number; price: number }[];
+  total_amount: number;
+  order_status: string;
+  payment_method: string;
+  notes: string | null;
+  created_at: string;
 }

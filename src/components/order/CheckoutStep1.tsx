@@ -133,7 +133,7 @@ export default function CheckoutStep1({
         </button>
         <button
           onClick={handleContinue}
-          className="flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-gradient-start to-gradient-end text-white font-semibold hover:opacity-90 transition-opacity"
+          className="flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-linear-to-r from-gradient-start to-gradient-end text-white font-semibold hover:opacity-90 transition-opacity"
         >
           Continue to Confirm
           <ArrowRight className="w-4 h-4" />

@@ -1,7 +1,8 @@
 "use client";
 
 import { categories } from "@/lib/menu-data";
-import { cn } from "@/lib/utils";
+import { motion } from "motion/react";
+import { fadeIn, viewportConfig } from "@/lib/animations";
 
 interface CategoryFilterProps {
   selected: string;
@@ -13,32 +14,46 @@ export default function CategoryFilter({
   onSelect,
 }: CategoryFilterProps) {
   return (
-    <div className="flex overflow-x-auto gap-2 pb-2 scrollbar-hide">
+    <motion.div
+      className="flex overflow-x-auto gap-2 pb-2 scrollbar-hide"
+      initial="hidden"
+      whileInView="visible"
+      viewport={viewportConfig}
+      variants={fadeIn}
+    >
       <button
         onClick={() => onSelect("all")}
-        className={cn(
-          "px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors",
-          selected === "all"
-            ? "bg-gradient-to-r from-gradient-start to-gradient-end text-white"
-            : "bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
-        )}
+        className="relative px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap"
       >
-        All
+        {selected === "all" && (
+          <motion.div
+            layoutId="category-pill"
+            className="absolute inset-0 bg-linear-to-r from-gradient-start to-gradient-end text-white rounded-full"
+            transition={{ type: "spring", stiffness: 300, damping: 25 }}
+          />
+        )}
+        <span className="relative z-10" style={{ color: selected === "all" ? "white" : undefined }}>
+          All
+        </span>
       </button>
       {categories.map((cat) => (
         <button
           key={cat.slug}
           onClick={() => onSelect(cat.slug)}
-          className={cn(
-            "px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors",
-            selected === cat.slug
-              ? "bg-gradient-to-r from-gradient-start to-gradient-end text-white"
-              : "bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
-          )}
+          className="relative px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap"
         >
-          {cat.icon} {cat.name}
+          {selected === cat.slug && (
+            <motion.div
+              layoutId="category-pill"
+              className="absolute inset-0 bg-linear-to-r from-gradient-start to-gradient-end rounded-full"
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+            />
+          )}
+          <span className="relative z-10" style={{ color: selected === cat.slug ? "white" : undefined }}>
+            {cat.icon} {cat.name}
+          </span>
         </button>
       ))}
-    </div>
+    </motion.div>
   );
 }

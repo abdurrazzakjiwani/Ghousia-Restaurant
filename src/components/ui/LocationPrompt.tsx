@@ -65,7 +65,7 @@ export default function LocationPrompt() {
         <div className="flex justify-center gap-2">
           <button
             onClick={handleSave}
-            className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:opacity-90 transition-opacity"
+            className="bg-linear-to-r from-green-500 to-green-600 text-white px-6 py-3 rounded-xl font-semibold hover:opacity-90 transition-opacity"
             disabled={address.trim().length < 3}
           >
             Save Address

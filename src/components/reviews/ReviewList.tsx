@@ -2,6 +2,8 @@
 
 import { Review } from "@/types";
 import { Star } from "lucide-react";
+import { motion } from "motion/react";
+import { staggerContainer, staggerItem, viewportConfig } from "@/lib/animations";
 
 interface ReviewListProps {
   reviews: Review[];
@@ -15,9 +17,15 @@ export default function ReviewList({ reviews }: ReviewListProps) {
   }
 
   return (
-    <div className="space-y-4">
+    <motion.div
+      className="space-y-4"
+      initial="hidden"
+      whileInView="visible"
+      viewport={viewportConfig}
+      variants={staggerContainer}
+    >
       {reviews.map((review) => (
-        <div key={review.id} className="card p-5">
+        <motion.div key={review.id} className="card p-5" variants={staggerItem}>
           <div className="flex items-center justify-between mb-2">
             <h4 className="font-semibold text-sm">{review.customer_name}</h4>
             <div className="flex gap-0.5">
@@ -39,8 +47,8 @@ export default function ReviewList({ reviews }: ReviewListProps) {
           <p className="text-xs text-gray-400 mt-2">
             {new Date(review.created_at).toLocaleDateString()}
           </p>
-        </div>
+        </motion.div>
       ))}
-    </div>
+    </motion.div>
   );
 }

@@ -1,30 +1,41 @@
 "use client";
 
+import { useState } from "react";
 import { useCart } from "@/hooks/useCart";
-import { generateWhatsAppUrl, generateOrderMessage, formatPrice } from "@/lib/utils";
-import OrderSummary from "@/components/order/OrderSummary";
-import { MessageCircle, ShoppingCart } from "lucide-react";
+import CheckoutStep1, { CheckoutDetails } from "@/components/order/CheckoutStep1";
+import CheckoutStep2 from "@/components/order/CheckoutStep2";
+import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
 
 export default function OrderPage() {
   const { items, total, updateQuantity, removeItem, itemCount } = useCart();
-  const phone = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "923013631555";
+  const [step, setStep] = useState<"details" | "confirm">("details");
+  const [checkoutDetails, setCheckoutDetails] = useState<CheckoutDetails | null>(null);
 
-  const whatsappUrl = generateWhatsAppUrl(
-    phone,
-    generateOrderMessage(
-      items.map((i) => ({ name: i.name, quantity: i.quantity, price: i.price })),
-      total
-    )
-  );
+  const handleNext = (details: CheckoutDetails) => {
+    setCheckoutDetails(details);
+    setStep("confirm");
+  };
+
+  const handleBack = () => {
+    setStep("details");
+  };
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-8">
         <h1 className="text-3xl font-bold mb-2">Your Order</h1>
         <p className="text-gray-600 dark:text-gray-400">
-          Review your cart and place your order via WhatsApp
+          {step === "details"
+            ? "Review your cart and fill in your details"
+            : "Confirm your order and place it via WhatsApp"}
         </p>
+        {step === "confirm" && (
+          <div className="flex items-center gap-2 mt-3">
+            <div className="h-1 flex-1 rounded-full bg-green-500" />
+            <div className="h-1 flex-1 rounded-full bg-green-500" />
+          </div>
+        )}
       </div>
 
       {items.length === 0 ? (
@@ -36,30 +47,24 @@ export default function OrderPage() {
             Browse Menu
           </Link>
         </div>
+      ) : step === "details" ? (
+        <CheckoutStep1
+          items={items}
+          total={total}
+          onUpdateQuantity={updateQuantity}
+          onRemove={removeItem}
+          onNext={handleNext}
+          onBackToMenu={() => (window.location.href = "/menu")}
+        />
       ) : (
-        <>
-          <OrderSummary
+        checkoutDetails && (
+          <CheckoutStep2
             items={items}
             total={total}
-            onUpdateQuantity={updateQuantity}
-            onRemove={removeItem}
+            details={checkoutDetails}
+            onBack={handleBack}
           />
-
-          <div className="mt-8 space-y-4">
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-4 rounded-xl transition-colors text-lg"
-            >
-              <MessageCircle className="w-5 h-5" />
-              Order {itemCount} items via WhatsApp
-            </a>
-            <p className="text-center text-sm text-gray-500">
-              Total: {formatPrice(total)} • Payment: Cash on Delivery
-            </p>
-          </div>
-        </>
+        )
       )}
     </div>
   );

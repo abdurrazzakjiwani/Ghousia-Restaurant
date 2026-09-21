@@ -1,9 +1,12 @@
 import { MenuItem } from "@/types";
 import MenuCard from "./MenuCard";
+import { motion, AnimatePresence } from "motion/react";
+import { staggerContainer } from "@/lib/animations";
 
 interface MenuGridProps {
   items: MenuItem[];
   onAdd: (item: MenuItem) => void;
+  onViewDetail: (item: MenuItem) => void;
   cartItems: Record<string, number>;
   onUpdateQuantity: (itemId: string, qty: number) => void;
 }
@@ -11,6 +14,7 @@ interface MenuGridProps {
 export default function MenuGrid({
   items,
   onAdd,
+  onViewDetail,
   cartItems,
   onUpdateQuantity,
 }: MenuGridProps) {
@@ -24,16 +28,31 @@ export default function MenuGrid({
   }
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-      {items.map((item) => (
-        <MenuCard
-          key={item.id}
-          item={item}
-          onAdd={() => onAdd(item)}
-          cartQuantity={cartItems[item.id] || 0}
-          onUpdateQuantity={(qty) => onUpdateQuantity(item.id, qty)}
-        />
-      ))}
-    </div>
+    <motion.div
+      className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"
+      variants={staggerContainer}
+      initial="visible"
+    >
+      <AnimatePresence mode="popLayout">
+        {items.map((item) => (
+          <motion.div
+            key={item.id}
+            layout
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.3 }}
+          >
+            <MenuCard
+              item={item}
+              onAdd={() => onAdd(item)}
+              onViewDetail={() => onViewDetail(item)}
+              cartQuantity={cartItems[item.id] || 0}
+              onUpdateQuantity={(qty) => onUpdateQuantity(item.id, qty)}
+            />
+          </motion.div>
+        ))}
+      </AnimatePresence>
+    </motion.div>
   );
 }

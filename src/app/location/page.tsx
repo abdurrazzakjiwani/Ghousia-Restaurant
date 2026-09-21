@@ -1,4 +1,5 @@
 import { MapPin, Phone, Clock } from "lucide-react";
+import Link from "next/link";
 import MapEmbed from "@/components/contact/MapEmbed";
 
 export default function LocationPage() {
@@ -14,6 +15,12 @@ export default function LocationPage() {
         <p className="text-gray-600 dark:text-gray-400">
           Visit us at our restaurant or order for delivery across Karachi
         </p>
+        <Link
+          href="/branches"
+          className="inline-flex items-center mt-4 text-gradient-start hover:text-gradient-end font-semibold transition-colors"
+        >
+          View all branches →
+        </Link>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

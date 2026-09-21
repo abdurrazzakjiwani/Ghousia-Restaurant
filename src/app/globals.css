@@ -1,40 +1,50 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-  html {
-    overflow-x: hidden;
-  }
-  body {
-    @apply bg-white text-gray-900 leading-relaxed;
-    font-family: var(--font-inter), system-ui, sans-serif;
-  }
+@custom-variant dark (&:where(.dark, .dark *));
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-poppins), system-ui, sans-serif;
-    letter-spacing: -0.02em;
-  }
+@theme {
+  --color-primary-50: #f0f4ff;
+  --color-primary-100: #dbe4ff;
+  --color-primary-200: #bac8ff;
+  --color-primary-300: #91a7ff;
+  --color-primary-400: #748ffc;
+  --color-primary-500: #5c7cfa;
+  --color-primary-600: #4c6ef5;
+  --color-primary-700: #4263eb;
+  --color-primary-800: #3b5bdb;
+  --color-primary-900: #364fc7;
+  --color-gradient-start: #f97316;
+  --color-gradient-end: #f97316;
 }
 
-@layer components {
-  .btn-primary {
-    @apply bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors;
-  }
-
-  .btn-secondary {
-    @apply border border-gray-300 px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors;
-  }
-
-  .card {
-    @apply bg-white rounded-xl shadow-md border border-gray-100;
-  }
+html {
+  overflow-x: hidden;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+body {
+  @apply bg-white text-gray-900 leading-relaxed;
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-poppins), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+@utility btn-primary {
+  @apply bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors;
+}
+
+@utility btn-secondary {
+  @apply border border-gray-300 px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors;
+}
+
+@utility card {
+  @apply bg-white rounded-xl shadow-md border border-gray-100;
+}
+
+@utility text-balance {
+  text-wrap: balance;
 }
 
 /* Custom scrollbar for chat */
@@ -56,14 +66,10 @@
   background: #ea580c;
 }
 
-
-
 .chat-scroll {
   scrollbar-width: thin;
   scrollbar-color: #f59e0b transparent;
 }
-
-
 
 /* Keyframe animations */
 @keyframes shimmer {
