@@ -48,8 +48,8 @@ export default function MainNav({
     <>
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="flex items-center justify-between h-14">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-lg font-bold text-orange-500">
+        <Link href="/" className="flex items-center gap-2 min-w-0">
+          <span className="text-lg font-bold text-orange-500 truncate max-w-[140px] sm:max-w-none">
             Ghousia Golden Spoon
           </span>
         </Link>

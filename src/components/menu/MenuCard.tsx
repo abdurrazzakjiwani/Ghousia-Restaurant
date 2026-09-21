@@ -69,26 +69,26 @@ export default function MenuCard({
             <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
               <button
                 onClick={() => onUpdateQuantity(cartQuantity - 1)}
-                className="w-8 h-8 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700"
+                className="w-11 h-11 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700"
               >
-                <Minus className="w-3 h-3" />
+                <Minus className="w-4 h-4" />
               </button>
               <span className="text-sm font-semibold w-6 text-center">
                 {cartQuantity}
               </span>
               <button
                 onClick={() => onUpdateQuantity(cartQuantity + 1)}
-                className="w-8 h-8 rounded-full bg-linear-to-r from-gradient-start to-gradient-end text-white flex items-center justify-center hover:opacity-90"
+                className="w-11 h-11 rounded-full bg-linear-to-r from-gradient-start to-gradient-end text-white flex items-center justify-center hover:opacity-90"
               >
-                <Plus className="w-3 h-3" />
+                <Plus className="w-4 h-4" />
               </button>
             </div>
           ) : (
             <button
               onClick={(e) => { e.stopPropagation(); onAdd(); }}
-              className="flex items-center gap-1 px-3 py-1.5 text-xs font-semibold rounded-full bg-linear-to-r from-gradient-start to-gradient-end text-white hover:opacity-90 transition-opacity"
+              className="flex items-center gap-1 px-4 py-2.5 text-sm font-semibold rounded-full bg-linear-to-r from-gradient-start to-gradient-end text-white hover:opacity-90 transition-opacity"
             >
-              <Plus className="w-3 h-3" /> Add
+              <Plus className="w-4 h-4" /> Add
             </button>
           )}
         </div>

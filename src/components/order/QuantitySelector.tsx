@@ -13,7 +13,7 @@ export default function QuantitySelector() {
         onClick={() => setQuantity((q) => Math.max(1, q - 1))}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+        className="w-11 h-11 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
       >
         <Minus className="w-4 h-4" />
       </motion.button>
@@ -24,7 +24,7 @@ export default function QuantitySelector() {
         onClick={() => setQuantity((q) => Math.min(99, q + 1))}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="w-10 h-10 rounded-full bg-linear-to-r from-gradient-start to-gradient-end text-white flex items-center justify-center hover:opacity-90 transition-opacity"
+        className="w-11 h-11 rounded-full bg-linear-to-r from-gradient-start to-gradient-end text-white flex items-center justify-center hover:opacity-90 transition-opacity"
       >
         <Plus className="w-4 h-4" />
       </motion.button>

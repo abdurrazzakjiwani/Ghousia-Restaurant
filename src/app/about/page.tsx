@@ -21,7 +21,7 @@ export default function AboutPage() {
     <div>
       {/* Hero Banner — T001, T002, T003 */}
       <motion.section
-        className="relative min-h-[70vh] flex items-center justify-center text-white overflow-hidden"
+        className="relative min-h-[50vh] sm:min-h-[70vh] flex items-center justify-center text-white overflow-hidden"
         initial="hidden"
         animate="visible"
         variants={fadeInUp}
@@ -182,7 +182,7 @@ export default function AboutPage() {
             ].map((item, i) => (
               <motion.div
                 key={i}
-                className="group relative h-80 rounded-2xl overflow-hidden shadow-lg cursor-pointer"
+                className="group relative min-h-80 rounded-2xl overflow-hidden shadow-lg cursor-pointer"
                 variants={staggerItem}
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}

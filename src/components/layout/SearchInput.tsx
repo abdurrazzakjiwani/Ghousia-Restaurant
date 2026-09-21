@@ -92,10 +92,10 @@ export default function SearchInput({ onNavigate }: SearchInputProps) {
             setIsOpen(false);
             setQuery("");
           }}
-          className="absolute right-2 p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:outline-none"
+          className="absolute right-2 p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700 focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:outline-none"
           aria-label="Close search"
         >
-          <X className="w-3.5 h-3.5 text-gray-400" />
+          <X className="w-5 h-5 text-gray-400" />
         </button>
       </div>
 

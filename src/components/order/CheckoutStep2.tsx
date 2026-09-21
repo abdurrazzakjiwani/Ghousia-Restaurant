@@ -155,7 +155,7 @@ export default function CheckoutStep2({
         </div>
       )}
 
-      <div className="flex gap-3 pt-2">
+      <div className="flex flex-wrap gap-3 pt-2">
         <button
           onClick={onBack}
           disabled={isSubmitting}

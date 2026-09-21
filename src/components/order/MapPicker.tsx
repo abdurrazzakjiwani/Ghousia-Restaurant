@@ -94,7 +94,7 @@ export default function MapPicker({ onLocationSelect, initialLat = 24.9, initial
         </div>
         <button
           onClick={handleUseMyLocation}
-          className="flex items-center gap-1 px-3 py-1.5 text-xs font-semibold rounded-full bg-linear-to-r from-gradient-start to-gradient-end text-white hover:opacity-90 transition-opacity"
+          className="flex items-center gap-1 px-4 py-2.5 text-sm font-semibold rounded-full bg-linear-to-r from-gradient-start to-gradient-end text-white hover:opacity-90 transition-opacity"
         >
           <Target className="w-3 h-3" /> Use My Location
         </button>

@@ -40,9 +40,9 @@ export default function OrderSummary({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20, height: 0, marginBottom: 0, padding: 0 }}
             transition={{ duration: 0.3 }}
-            className="flex items-center gap-4 p-4 card"
+            className="flex flex-wrap items-center gap-3 p-4 card"
           >
-          <div className="w-16 h-16 bg-gray-200 dark:bg-gray-800 rounded-lg flex items-center justify-center overflow-hidden shrink-0">
+          <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gray-200 dark:bg-gray-800 rounded-lg flex items-center justify-center overflow-hidden shrink-0">
             {item.image_url ? (
               <img
                 src={item.image_url}
@@ -60,18 +60,18 @@ export default function OrderSummary({
           <div className="flex items-center gap-2">
             <button
               onClick={() => onUpdateQuantity(item.menu_item_id, item.quantity - 1)}
-              className="w-7 h-7 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center"
+              className="w-11 h-11 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center"
             >
-              <Minus className="w-3 h-3" />
+              <Minus className="w-4 h-4" />
             </button>
             <span className="text-sm font-semibold w-6 text-center">
               {item.quantity}
             </span>
             <button
               onClick={() => onUpdateQuantity(item.menu_item_id, item.quantity + 1)}
-              className="w-7 h-7 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center"
+              className="w-11 h-11 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center"
             >
-              <Plus className="w-3 h-3" />
+              <Plus className="w-4 h-4" />
             </button>
           </div>
           <p className="font-semibold text-sm w-20 text-right">
@@ -79,9 +79,9 @@ export default function OrderSummary({
           </p>
           <button
             onClick={() => onRemove(item.menu_item_id)}
-            className="text-red-400 hover:text-red-600 transition-colors"
+            className="w-11 h-11 rounded-full flex items-center justify-center text-red-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
           >
-            <Trash2 className="w-4 h-4" />
+            <Trash2 className="w-5 h-5" />
           </button>
           </motion.div>
         ))}

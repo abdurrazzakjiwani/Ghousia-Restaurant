@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { getFeaturedItems } from "@/lib/menu-data";
 import { formatPrice } from "@/lib/utils";
@@ -18,16 +19,22 @@ function FeaturedCard({ item }: { item: ReturnType<typeof getFeaturedItems>[numb
       whileHover={{ scale: 1.02, boxShadow: "0 10px 40px rgba(0,0,0,0.12)" }}
       transition={{ duration: 0.2, ease: "easeOut" }}
     >
-      <div className="aspect-square bg-gray-200 dark:bg-gray-800 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+      <div className="aspect-square bg-gray-200 dark:bg-gray-800 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
         {showImage ? (
-          <motion.img
-            src={item.image_url!}
-            alt={item.name}
-            className="w-full h-full object-cover"
-            onError={() => setImgError(true)}
+          <motion.div
+            className="relative w-full h-full"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
-          />
+          >
+            <Image
+              src={item.image_url!}
+              alt={item.name}
+              fill
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
+              className="object-cover"
+              onError={() => setImgError(true)}
+            />
+          </motion.div>
         ) : (
           <div className="flex flex-col items-center justify-center p-4 text-center">
             <span className="text-3xl mb-2">🍽️</span>

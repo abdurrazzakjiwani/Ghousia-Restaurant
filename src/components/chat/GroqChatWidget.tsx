@@ -44,7 +44,7 @@ export default function GroqChatWidget() {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed bottom-6 right-6 z-50 w-80 sm:w-96 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-800 flex flex-col overflow-hidden"
+          className="fixed bottom-6 right-6 z-50 w-[calc(100vw-3rem)] sm:w-96 max-w-96 bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-800 flex flex-col overflow-hidden"
           initial="hidden"
           animate="visible"
           exit="exit"
@@ -129,7 +129,7 @@ export default function GroqChatWidget() {
               <button
                 onClick={handleSend}
                 disabled={isLoading || !input.trim()}
-                className="w-9 h-9 rounded-lg bg-linear-to-r from-gradient-start to-gradient-end text-white flex items-center justify-center disabled:opacity-50"
+                className="w-11 h-11 rounded-lg bg-linear-to-r from-gradient-start to-gradient-end text-white flex items-center justify-center disabled:opacity-50"
               >
                 <Send className="w-4 h-4" />
               </button>

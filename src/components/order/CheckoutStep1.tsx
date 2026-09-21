@@ -123,7 +123,7 @@ export default function CheckoutStep1({
         />
       </div>
 
-      <div className="flex gap-3 pt-4">
+      <div className="flex flex-wrap gap-3 pt-4">
         <button
           onClick={onBackToMenu}
           className="flex items-center gap-2 px-6 py-3 rounded-xl border-2 border-gray-200 font-semibold hover:bg-gray-50 transition-colors"

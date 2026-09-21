@@ -123,7 +123,7 @@ export default function Hero() {
           </motion.div>
         </div>
       </motion.div>
-      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+      <div className="absolute bottom-12 sm:bottom-20 left-1/2 -translate-x-1/2 flex gap-3 z-10">
         {heroImages.map((_, index) => (
           <button
             key={index}
@@ -136,7 +136,7 @@ export default function Hero() {
         ))}
       </div>
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2"
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
       >
