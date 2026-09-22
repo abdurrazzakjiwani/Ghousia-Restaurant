@@ -45,7 +45,7 @@ export default function AboutPreview() {
             </p>
             <Link
               href="/about"
-              className="inline-flex items-center text-gradient-start hover:text-gradient-end font-semibold transition-colors"
+              className="inline-flex items-center text-orange-600 hover:text-orange-700 font-semibold transition-colors"
             >
               Learn More About Us →
             </Link>

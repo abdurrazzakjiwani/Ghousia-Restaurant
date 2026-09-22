@@ -84,7 +84,7 @@ export default function MobileDrawer({
             className="p-2.5 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-700 focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:outline-none min-w-[44px] min-h-[44px]"
             aria-label="Close menu"
           >
-            <X className="w-5 h-5 text-gray-200 dark:text-gray-300" />
+            <X className="w-5 h-5 text-gray-200 dark:text-gray-200" />
           </button>
         </div>
 
@@ -96,7 +96,7 @@ export default function MobileDrawer({
               "block px-4 py-3 rounded-lg text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:outline-none",
               pathname === "/menu"
                 ? "bg-amber-900/30 text-amber-400"
-                : "hover:bg-gray-800 text-gray-200 dark:text-gray-300"
+                : "hover:bg-gray-800 text-gray-200"
             )}
           >
             Menu
@@ -110,7 +110,7 @@ export default function MobileDrawer({
                 "block px-4 py-3 rounded-lg text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:outline-none",
                 pathname === link.href
                   ? "bg-amber-900/30 text-amber-400"
-                  : "hover:bg-gray-800 text-gray-200 dark:text-gray-300"
+                  : "hover:bg-gray-800 text-gray-200"
               )}
             >
               {link.label}
@@ -121,7 +121,7 @@ export default function MobileDrawer({
         <div className="p-4 border-t border-gray-700 dark:border-gray-800 space-y-3">
           <a
             href="tel:923013631555"
-            className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium hover:bg-gray-800 text-gray-200 dark:text-gray-300 focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:outline-none"
+            className="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium hover:bg-gray-800 text-gray-200 focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:outline-none"
             aria-label="Call restaurant"
           >
             <Phone className="w-5 h-5" />

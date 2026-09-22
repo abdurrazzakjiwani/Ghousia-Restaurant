@@ -98,7 +98,7 @@ export default function MainNav({
             className="p-2 rounded-lg hover:bg-gray-100 text-gray-700 focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:outline-none"
             aria-label="Call restaurant"
           >
-            <Phone className="w-5 h-5 text-gray-700" />
+            <Phone className="w-5 h-5 text-gray-700 dark:text-gray-200" />
           </a>
           <button
             onClick={() => setDrawerOpen(!drawerOpen)}
@@ -106,9 +106,9 @@ export default function MainNav({
             aria-label={drawerOpen ? "Close menu" : "Open menu"}
           >
             {drawerOpen ? (
-              <X className="w-5 h-5 text-gray-700" />
+              <X className="w-5 h-5 text-gray-700 dark:text-gray-200" />
             ) : (
-              <Menu className="w-5 h-5 text-gray-700" />
+              <Menu className="w-5 h-5 text-gray-700 dark:text-gray-200" />
             )}
           </button>
         </div>

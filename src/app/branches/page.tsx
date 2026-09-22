@@ -40,7 +40,7 @@ export default function BranchesPage() {
                 href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(branch.mapQuery)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center text-gradient-start hover:text-gradient-end font-semibold text-sm transition-colors"
+                className="inline-flex items-center text-orange-600 hover:text-orange-700 font-semibold text-sm transition-colors"
               >
                 Open in Google Maps →
               </a>
@@ -78,7 +78,7 @@ export default function BranchesPage() {
       <div className="text-center mt-12">
         <Link
           href="/"
-          className="inline-flex items-center text-gradient-start hover:text-gradient-end font-semibold transition-colors"
+          className="inline-flex items-center text-orange-600 hover:text-orange-700 font-semibold transition-colors"
         >
           ← Back to Home
         </Link>

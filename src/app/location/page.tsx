@@ -17,7 +17,7 @@ export default function LocationPage() {
         </p>
         <Link
           href="/branches"
-          className="inline-flex items-center mt-4 text-gradient-start hover:text-gradient-end font-semibold transition-colors"
+          className="inline-flex items-center mt-4 text-orange-600 hover:text-orange-700 font-semibold transition-colors"
         >
           View all branches →
         </Link>
@@ -31,7 +31,7 @@ export default function LocationPage() {
         <div className="space-y-6">
           <div className="card p-6">
             <div className="flex items-start gap-4">
-              <MapPin className="w-6 h-6 text-gradient-start shrink-0 mt-1" />
+              <MapPin className="w-6 h-6 text-orange-600 shrink-0 mt-1" />
               <div>
                 <h3 className="font-semibold mb-1">Address</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">{address}</p>
@@ -41,13 +41,13 @@ export default function LocationPage() {
 
           <div className="card p-6">
             <div className="flex items-start gap-4">
-              <Phone className="w-6 h-6 text-gradient-start shrink-0 mt-1" />
+              <Phone className="w-6 h-6 text-orange-600 shrink-0 mt-1" />
               <div>
                 <h3 className="font-semibold mb-1">Phone</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  <a href={`tel:${phone1}`} className="hover:text-gradient-start">{phone1}</a>
+                  <a href={`tel:${phone1}`} className="hover:text-orange-600">{phone1}</a>
                   <span className="mx-2">|</span>
-                  <a href={`tel:${phone2}`} className="hover:text-gradient-start">{phone2}</a>
+                  <a href={`tel:${phone2}`} className="hover:text-orange-600">{phone2}</a>
                 </p>
               </div>
             </div>
@@ -55,7 +55,7 @@ export default function LocationPage() {
 
           <div className="card p-6">
             <div className="flex items-start gap-4">
-              <Clock className="w-6 h-6 text-gradient-start shrink-0 mt-1" />
+              <Clock className="w-6 h-6 text-orange-600 shrink-0 mt-1" />
               <div>
                 <h3 className="font-semibold mb-1">Hours</h3>
                 <p className="text-sm text-gray-500 dark:text-gray-400">{hours}</p>

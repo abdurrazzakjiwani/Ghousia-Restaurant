@@ -44,7 +44,7 @@ export default function PopularCategories() {
         <div className="text-center mt-8">
           <Link
             href="/menu"
-            className="inline-flex items-center text-gradient-start hover:text-gradient-end font-semibold transition-colors"
+            className="inline-flex items-center text-orange-600 hover:text-orange-700 font-semibold transition-colors"
           >
             View All Categories →
           </Link>

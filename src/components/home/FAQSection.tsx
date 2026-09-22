@@ -58,7 +58,7 @@ function FAQItem({ faq, isOpen, onToggle }: { faq: typeof faqs[0]; isOpen: boole
         onClick={onToggle}
         className="w-full flex items-center justify-between text-left group"
       >
-        <span className="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-gradient-start transition-colors pr-4">
+        <span className="font-semibold text-gray-900 dark:text-gray-100 group-hover:text-orange-600 transition-colors pr-4">
           {faq.question}
         </span>
         <motion.div

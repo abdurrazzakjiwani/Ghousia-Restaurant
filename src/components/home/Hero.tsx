@@ -67,7 +67,7 @@ export default function Hero() {
           </motion.div>
         </AnimatePresence>
       </motion.div>
-      <motion.div className="absolute inset-0 bg-black/40" style={{ y: bgY }} />
+      <motion.div className="absolute inset-0 bg-black/50" style={{ y: bgY }} />
       <motion.div
         className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-32"
         initial="hidden"
@@ -111,7 +111,7 @@ export default function Hero() {
               </Button>
             </Link>
             <Link href="/reservation">
-              <Button size="lg" className="bg-white text-gradient-start hover:bg-gray-100">
+              <Button size="lg" className="bg-white text-orange-600 hover:bg-gray-100">
                 Reserve Table
               </Button>
             </Link>
